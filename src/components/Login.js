@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from "../actions/loginForm.js"
+import { login } from "../actions/currentUser.js"
 
 
-const Login = ({ loginFormData, updateLoginForm }) => {
+
+
+const Login = ({ loginFormData, updateLoginForm, login }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -12,9 +15,15 @@ const Login = ({ loginFormData, updateLoginForm }) => {
           [name]: value
         }
         updateLoginForm(updatedFormInfo)
-      }
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        login(loginFormData, history)
+    }
+
     return (
-        <form onSubmit={undefined}>
+        <form onSubmit={handleSubmit}>
           <input placeholder="email" value={loginFormData.email} name="email" type="text" onChange={handleInputChange} />
           <input placeholder="password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange} />
           <input type="submit" value="Log In"/>
@@ -38,4 +47,4 @@ const mapStateToProps = state => {
 //   imported action creator updateLoginForm I passed as an object in connect as a second argument
 // I get availability to this updateLoginForm object within component as a props and I can use it as a callbeck for onChange
 // and I access it directly becouse it's already destructured
-export default connect(mapStateToProps, { updateLoginForm })(Login)
+export default connect(mapStateToProps, { updateLoginForm, login })(Login)
