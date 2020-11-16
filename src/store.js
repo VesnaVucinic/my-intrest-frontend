@@ -1,9 +1,14 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import usersReducer from './reducers/users.js'
+import currentUser from './reducers/currentUser'
 import thunk from 'redux-thunk'
+import loginForm from './reducers/loginForm'
 
+// just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({
-    users: usersReducer
+    users: usersReducer,
+    currentUser,
+    loginForm
 })
 
 // createStore takes as arguments reducer and redux dev tools
