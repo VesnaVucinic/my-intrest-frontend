@@ -3,6 +3,7 @@ import './App.css';
 import { getCurrentUser } from "./actions/currentUser.js"
 import { connect } from 'react-redux';
 import NavBar from './components/NavBar.js'
+import MainContainer from './components/MainContainer.js';
 
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
@@ -13,9 +14,10 @@ class App extends React.Component {
 
   render() {
     return (
-     
-     <NavBar/>
-    //  <MainContainer/>
+     <div className="App">
+      <NavBar/>
+      <MainContainer/>
+     </div>
     );
   }
 }
