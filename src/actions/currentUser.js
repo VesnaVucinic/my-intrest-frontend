@@ -6,11 +6,17 @@ export const setCurrentUser = user => {
     }
 }
 
+// this will delete user that is in redux store
+export const clearCurrentUser = () => {
+  return {
+    type: "CLEAR_CURRENT_USER"
+  }
+}
 // asynchronous action creators
 export const login = credentials => {
     console.log(credentials)
     return dispatch => {
-      return fetch("http://127.0.0.1:3002/api/v1/login", {
+      return fetch("http://127.0.0.1:3001/api/v1/login", {
         credentials: "include",
         method: "POST",
         headers: {
@@ -32,8 +38,8 @@ export const login = credentials => {
 
 export const getCurrentUser = () => {
     return dispatch => {
-      return fetch("http://127.0.0.1:3002/api/v1/get_current_user", {
-        // credentials: "include",
+      return fetch("http://127.0.0.1:3001/api/v1/get_current_user", {
+        credentials: "include",
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -50,4 +56,14 @@ export const getCurrentUser = () => {
         .catch(console.log)
     }
 }
-  
+
+// this will cleare sessions from backend
+export const logout = () => {
+  return dispatch => {
+    dispatch(clearCurrentUser())
+    return fetch('http://localhost:3001/api/v1/logout', {
+      credentials: "include",
+      method: "DELETE"
+    })
+  }
+} 
