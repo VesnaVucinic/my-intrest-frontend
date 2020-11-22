@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { updateLoginForm } from "../actions/loginForm.js"
 import { login } from "../actions/currentUser.js"
 
-
-
-
 const Login = ({ loginFormData, updateLoginForm, login }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
     const handleInputChange = event => {
@@ -31,7 +28,7 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
       )
 }
 
-// this gets the state from the store and allowes me to use as a propsgives us access to this chunk of state as a props
+// this gets the state from the store and allowes me to use as a props gives us access to this chunk of state as a props
 // props get passed into functional component as an argument and thet will come as an object
 // becouse is an object I can destructure it
 // this gives me an argument coming to this component that looks like this:
