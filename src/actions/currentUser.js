@@ -7,16 +7,16 @@ export const setCurrentUser = user => {
 }
 
 // asynchronous action creators
-export const login = credentials => {
-    console.log(credentials)
+export const login = (user) => {
+    console.log(user)
     return dispatch => {
       return fetch("http://127.0.0.1:3002/api/v1/login", {
-        credentials: "include",
+        // credentials: "include",
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(credentials)
+        body: JSON.stringify(user)
       })
         .then(response =>response.json())
         .then(response =>{
@@ -24,6 +24,7 @@ export const login = credentials => {
                 alert(response.error)
             } else {
                 dispatch(setCurrentUser(response.data)) 
+                localStorage.setItem('token', user.token)
             }
         })
         .catch(console.log)
@@ -31,23 +32,26 @@ export const login = credentials => {
 }
 
 export const getCurrentUser = () => {
-    return dispatch => {
-      return fetch("http://127.0.0.1:3002/api/v1/get_current_user", {
-        // credentials: "include",
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-        .then(response => response.json())
-        .then(response => {
-          if (response.error) {
-            alert(response.error)
-          } else {
-            dispatch(setCurrentUser(response.data))
-          }
-        })
-        .catch(console.log)
-    }
+  const token = localStorage.getItem("token")
+    if (token) {
+      return dispatch => {
+        return fetch("http://127.0.0.1:3002/api/v1/get_current_user", {
+          // credentials: "include",
+          headers: {
+            "Authorization": token
+          },
+          })
+          .then(response => response.json())
+          .then(response => {
+            if (response.error) {
+              alert(response.error)
+            } else {
+              dispatch(setCurrentUser(response.data))
+            }
+          
+          })
+          .catch(console.log)
+      }
+  }
 }
   
