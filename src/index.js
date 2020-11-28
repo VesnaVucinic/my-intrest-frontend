@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './store.js'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
   // store is prop that must be provided and store must be created using createStore
   <Provider store={ store }>
-    <App />
+    <Router><App /></Router>
   </Provider>,
   document.getElementById('root')
 );
