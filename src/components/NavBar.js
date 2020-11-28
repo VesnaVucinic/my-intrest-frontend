@@ -8,7 +8,10 @@ const NavBar = ({ currentUser }) => {
   return (
     <div className="nav">
       { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
-      { currentUser ? <Logout/> : <Login/> }
+      {/* { currentUser ? <Logout/> : <Login/> } */}
+      <button>Log In</button>
+      OR 
+      <button>Sign Up</button>
     </div>
   )
 }
