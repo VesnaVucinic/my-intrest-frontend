@@ -14,8 +14,8 @@ export function loginUserFetch(userInfo){
             if(data.error){
                 alert(data.error)
             }else{
-             let user_json = JSON.parse(data.attributes.user) 
-             localStorage.setItem("token", data.attributes.jwt)
+             let user_json = JSON.parse(data.user.data) 
+             localStorage.setItem("token", data.jwt)
              dispatch(loginUser(user_json))
             }
          })
@@ -36,7 +36,7 @@ export function createUser(userinfo){
            if(data.error){
                alert(data.error)
            }else{
-            let user_json = JSON.parse(data.user)
+            let user_json = JSON.parse(data.user.data)
             localStorage.setItem("token", data.jwt)
             dispatch(loginUser(user_json))
            }
@@ -47,7 +47,7 @@ export function fetchLoggedInUser(){
     return dispatch=>{
         const token = localStorage.token
         if (token) {
-            return fetch("http://127.0.0.1:3001/api/v1/auto-login", {
+            return fetch("http://127.0.0.1:3001/api/v1/get_current_user", {
               method: "GET",
               headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export function fetchLoggedInUser(){
                     alert(data.error)
                   localStorage.removeItem("token")
                 } else {
-                   dispatch(loginUser(data))               
+                   dispatch(loginUser(data.alertuser.data))               
                 }
               })
           }
