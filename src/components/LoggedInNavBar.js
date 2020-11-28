@@ -1,15 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Login from './Login.js'
 import Logout from './Logout.js'
+import Navbar from 'react-bootstrap/Navbar'
 
-const NavBar = ({ currentUser }) => {
+const LoggedInNavBar = ({ currentUser }) => {
   return (
-    <div className="nav">
+    <Navbar bg={"dark"}> 
+    <div className="container">
       { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
       { currentUser ? <Logout/> : "" }
-    
     </div>
+    </Navbar>
+    
   )
 }
 
@@ -25,4 +27,4 @@ const mapStateToProps = ({ currentUser }) => {
     }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(LoggedInNavBar)
