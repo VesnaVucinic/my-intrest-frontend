@@ -3,12 +3,15 @@ import usersReducer from './reducers/users.js'
 import currentUser from './reducers/currentUser'
 import thunk from 'redux-thunk'
 import loginForm from './reducers/loginForm'
+import signupForm from './reducers/signupForm'
 
 // just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({
     users: usersReducer,
     currentUser,
-    loginForm
+    loginForm,
+    signupForm
+
 })
 
 // createStore takes as arguments reducer and redux dev tools
