@@ -1,14 +1,15 @@
 import React from 'react'
 import './App.css';
-import { getCurrentUser } from "./actions/currentUser.js"
+import { getCurrentUser } from "./actions/currentUser"
 import { connect } from 'react-redux';
-import NavBar from './components/NavBar.js'
-import Login from './components/Login.js'
-import Signup from './components/Signup.js'
-import Logout from './components/Logout.js'
-import Home from './components/Home.js'
-import MainContainer from './components/MainContainer.js';
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Logout from './components/Logout'
+import Home from './components/Home'
+import MainContainer from './components/MainContainer';
 import { Route, Switch, withRouter  } from 'react-router-dom'
+import NotLoggedInNavBar from './components/NotLoggedInNavBar';
+import LoggedInNavBar from './components/LoggedInNavBar'
 
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
@@ -21,9 +22,8 @@ class App extends React.Component {
     const { loggedIn } = this.props
     return (
       <div className="App">
-         <NavBar/>
+         {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
         <Switch>
-            <Route exact path='/' render={(props) => loggedIn ? <MainContainer {...props}/> : <Home {...props}/>}/>
             <Route exact path='/signup' component={Signup}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/logout' component={Logout}/>
