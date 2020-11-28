@@ -1,4 +1,5 @@
 import { resetLoginForm } from "./loginForm.js"
+import { resetSignupForm } from "./signupForm.js"
 
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -37,6 +38,36 @@ export const login = userInfo => {
               dispatch(setCurrentUser(response.user.data))
               
               dispatch(resetLoginForm())
+          }
+      })
+      .catch(console.log)
+  }
+}
+
+export const signup = userInfo => {
+  console.log(userInfo)
+  return dispatch => {
+    const userCredentials = {
+      user: userInfo
+    }
+    return fetch("http://127.0.0.1:3001/api/v1/signup", {
+      
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userCredentials)
+    })
+      .then(response =>response.json())
+      .then(response =>{
+          if(response.error) {
+              alert(response.error)
+          } else {
+              console.log(response.user.data)
+              localStorage.setItem('token', response.jwt)
+              dispatch(setCurrentUser(response.user.data))
+              
+              dispatch(resetSignupForm())
           }
       })
       .catch(console.log)
