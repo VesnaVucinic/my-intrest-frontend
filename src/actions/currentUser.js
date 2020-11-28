@@ -16,7 +16,7 @@ export const clearCurrentUser = () => {
   }
 }
 // asynchronous action creators
-export const login = userInfo => {
+export const login = (userInfo, history) => {
   console.log(userInfo)
   return dispatch => {
     return fetch("http://127.0.0.1:3001/api/v1/login", {
@@ -35,16 +35,16 @@ export const login = userInfo => {
           } else {
               console.log(response.user.data)
               localStorage.setItem('token', response.jwt)
-              dispatch(setCurrentUser(response.user.data))
-              
+              dispatch(setCurrentUser(response.user.data)) 
               dispatch(resetLoginForm())
+              history.push('/')
           }
       })
       .catch(console.log)
   }
 }
 
-export const signup = userInfo => {
+export const signup = (userInfo, history) => {
   console.log(userInfo)
   return dispatch => {
     const userCredentials = {
@@ -66,8 +66,8 @@ export const signup = userInfo => {
               console.log(response.user.data)
               localStorage.setItem('token', response.jwt)
               dispatch(setCurrentUser(response.user.data))
-              
               dispatch(resetSignupForm())
+              history.push('/')
           }
       })
       .catch(console.log)
