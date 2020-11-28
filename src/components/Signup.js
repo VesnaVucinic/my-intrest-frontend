@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateSignupForm } from "../actions/signupForm.js"
 import { signup } from "../actions/currentUser.js"
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
@@ -19,30 +21,42 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         signup(signupFormData, history)
     }
 
-    return (
-        <form onSubmit={handleSubmit}>
-          <input placeholder="name" value={signupFormData.name} name="name" type="text" onChange={handleInputChange} />
-          <input placeholder="email" value={signupFormData.email} name="email" type="text" onChange={handleInputChange} />
-          <input placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleInputChange} />
-          <input type="submit" value="Sign Up"/>
-        </form>
-      )
+    return (        
+        <Form className="container" onSubmit={handleSubmit} >
+            <h1>Sign Up Form</h1>
+            <Form.Group controlId="formUserName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control 
+                   name = "name"
+                   onChange={handleInputChange} 
+                   type="name" 
+                   value={signupFormData.name}/>
+            </Form.Group>
+            <Form.Group controlId="formUserName">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control 
+                   name = "email"
+                   onChange={handleInputChange} 
+                   type="email" 
+                   value={signupFormData.email}/>
+            </Form.Group>
+            <Form.Group controlId="formUserName">
+                 <Form.Label>Password</Form.Label>
+                 <Form.Control 
+                    name = "password"
+                    onChange={handleInputChange} 
+                    type="password" 
+                    value={signupFormData.password}/>
+            </Form.Group>
+            <Button variant="primary" type="submit">Sign Up</Button>
+        </Form>
+    )
 }
 
-// this gets the state from the store and allowes me to use as a props gives us access to this chunk of state as a props
-// props get passed into functional component as an argument and thet will come as an object
-// becouse is an object I can destructure it
-// this gives me an argument coming to this component that looks like this:
-// {
-//   email: "vesna@vesna.com",
-//   password: "vv"
-// }
 const mapStateToProps = state => {
     return {
         signupFormData: state.signupForm
     }
   }
-//   imported action creator updatesignupForm I passed as an object in connect as a second argument
-// I get availability to this updatesignupForm object within component as a props and I can use it as a callbeck for onChange
-// and I access it directly becouse it's already destructured
+
 export default connect(mapStateToProps, { updateSignupForm,  signup } )(Signup)
