@@ -1,5 +1,7 @@
-.App {
-  text-align: center;
+
+
+ .App {
+  text-align: left;
 }
 
 .App-logo {
@@ -14,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #053ca8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,9 +38,70 @@
     transform: rotate(360deg);
   }
 }
-
-.nav {
-  color: blue;
+.btn-primary a{
+  color: black;
+  font-weight: 700;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
+
+.title{
+   color:white;
+   opacity: 1.5;
+   font-family: fantasy;
+   font-size: 5px;
+   position: absolute;
+   left: 10%
+
+}
+
+
+
+.navbar{
+  color: azure;
+  height: 50px;
+}
+
+.navbar-nav{
+  color: azure
+}
+
+form {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input.form-control{
+  width: 50%;
+}
+
+.error{
+  color: red;
+  margin-top: 0;
+  padding-bottom: 3%;
+}
+/* 
+
+
+.footer{
+  background-color: rgb(15, 77, 61);
+  margin-top: 2%;
+  color: antiquewhite;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 1%;
+}
+
+.block-block{
+  min-height: 150px;
+  content: " ";
+}
+
+.contact-block{
+  padding: 1%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.contact-block pre{
+   color: antiquewhite;
+}
