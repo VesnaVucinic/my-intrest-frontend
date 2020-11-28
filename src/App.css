@@ -80,28 +80,3 @@ input.form-control{
   margin-top: 0;
   padding-bottom: 3%;
 }
-/* 
-
-
-.footer{
-  background-color: rgb(15, 77, 61);
-  margin-top: 2%;
-  color: antiquewhite;
-  position: fixed;
-  bottom: 0;
-  padding-bottom: 1%;
-}
-
-.block-block{
-  min-height: 150px;
-  content: " ";
-}
-
-.contact-block{
-  padding: 1%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.contact-block pre{
-   color: antiquewhite;
-}
