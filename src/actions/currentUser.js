@@ -101,8 +101,5 @@ export const logout = () => {
   return dispatch => {
     localStorage.removeItem("token")
     dispatch(clearCurrentUser())
-    // return fetch('http://localhost:3001/api/v1/logout', {
-    //   method: "DELETE"
-    // })
   }
 } 
