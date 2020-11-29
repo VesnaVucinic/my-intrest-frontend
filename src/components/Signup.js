@@ -5,7 +5,7 @@ import { signup } from "../actions/currentUser.js"
 // import Button from 'react-bootstrap/Button'
 // import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
@@ -56,27 +56,18 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='black' textAlign='center'>
+            <Header as='h2' color='light blue' textAlign='center'>
               Sign-up to create your account
           </Header>
             <Form size='large'>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' name = "name" placeholder='Name' type="name" onChange={handleInputChange}  />
-                <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange}  />
-                <Form.Input
-                  fluid
-                  icon='lock'
-                  iconPosition='left'
-                  name = "password"
-                  placeholder='Password'
-                  type='password'
-                  onChange={handleInputChange} 
-                  
-                />
+                <Form.Input fluid icon='user' iconPosition='left' name = "name" placeholder='Name' type="name" onChange={handleInputChange} />
+                <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange} />
+                <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' onChange={handleInputChange} />
     
-                <Button color='black' fluid size='large' onClick={handleSubmit}>
+                <Button color='light blue' fluid size='large' onClick={handleSubmit}>
                   Sign Up
-              </Button>
+                </Button>
               </Segment>
             </Form>
             <Message>
