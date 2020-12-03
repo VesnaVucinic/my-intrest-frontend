@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout.js'
 import Navbar from 'react-bootstrap/Navbar'
+import { NavLink } from 'react-router-dom'
 // import { Menu, Container } from 'semantic-ui-react'
 // import { NavLink, withRouter } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ import Navbar from 'react-bootstrap/Navbar'
 const LoggedInNavBar = ({ currentUser }) => {
   return (
     <Navbar  bg="light" variant="light"> 
+        <NavLink exact activeClassName="active" to="/boards"  >My Boards</NavLink>
         <Navbar.Collapse className="justify-content-center">    
             <Navbar.Text >
                 { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }  
