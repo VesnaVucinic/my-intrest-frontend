@@ -7,6 +7,7 @@ import Signup from './components/Signup'
 import Logout from './components/Logout'
 import Home from './components/Home'
 import MainContainer from './components/MainContainer';
+import MyBoards from './components/MyBoards.js'
 import { Route, Switch, withRouter  } from 'react-router-dom'
 import NotLoggedInNavBar from './components/NotLoggedInNavBar';
 import LoggedInNavBar from './components/LoggedInNavBar'
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route exact path='/signup' component={Signup}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/logout' component={Logout}/>
+            <Route exact path='/boards' component={MyBoards}/>
         </Switch>
       </div>
       
