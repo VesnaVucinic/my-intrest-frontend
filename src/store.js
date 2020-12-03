@@ -4,13 +4,15 @@ import currentUser from './reducers/currentUser'
 import thunk from 'redux-thunk'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
+import myBoards from './reducers/myBoards'
 
 // just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({
     users: usersReducer,
     currentUser,
     loginForm,
-    signupForm
+    signupForm,
+    myBoards
 
 })
 
