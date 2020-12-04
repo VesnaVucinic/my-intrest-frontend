@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import Logout from './Logout.js'
 import Navbar from 'react-bootstrap/Navbar'
 import { NavLink } from 'react-router-dom'
+import MainContainer from './MainContainer'
 // import { Menu, Container } from 'semantic-ui-react'
 // import { NavLink, withRouter } from 'react-router-dom'
 
 
 const LoggedInNavBar = ({ currentUser }) => {
   return (
+    <div>
     <Navbar  bg="light" variant="light"> 
         <NavLink exact activeClassName="active" to="/boards"  >My Boards</NavLink>
         <Navbar.Collapse className="justify-content-center">    
@@ -18,6 +20,10 @@ const LoggedInNavBar = ({ currentUser }) => {
         </Navbar.Collapse>       
             { currentUser ? <Logout/> : "" } 
     </Navbar>
+    <div>
+        <MainContainer/>
+    </div>
+    </div>
   )
 }
 

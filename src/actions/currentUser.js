@@ -1,5 +1,6 @@
 import { resetLoginForm } from "./loginForm.js"
 import { resetSignupForm } from "./signupForm.js"
+import { getMyBoards, clearBoards } from "./myBoards.js"
 
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -35,7 +36,8 @@ export const login = (userInfo, history) => {
           } else {
               console.log(response.user.data)
               localStorage.setItem('token', response.jwt)
-              dispatch(setCurrentUser(response.user.data)) 
+              dispatch(setCurrentUser(response.user.data))
+              dispatch(getMyBoards()) 
               dispatch(resetLoginForm())
               history.push('/')
           }
@@ -66,6 +68,7 @@ export const signup = (userInfo, history) => {
               console.log(response.user.data)
               localStorage.setItem('token', response.jwt)
               dispatch(setCurrentUser(response.user.data))
+              dispatch(getMyBoards())
               dispatch(resetSignupForm())
               history.push('/')
           }
@@ -90,6 +93,7 @@ export const getCurrentUser = () => {
             alert(response.error)
           } else {
             dispatch(setCurrentUser(response.user.data))
+            dispatch(getMyBoards())
           }
         })
         .catch(console.log)
@@ -101,5 +105,17 @@ export const logout = () => {
   return dispatch => {
     localStorage.removeItem("token")
     dispatch(clearCurrentUser())
+    dispatch(clearBoards())
+    // return fetch('http://localhost:3001/api/v1/logout', {
+    //   method: "DELETE"
+    // })
   }
 } 
+
+// export const logout = () => {
+//   return function (dispatch){
+  // it can be arrow function
+//     all asynchronous action creators that use thunk return function 
+  
+//   }
+// } 

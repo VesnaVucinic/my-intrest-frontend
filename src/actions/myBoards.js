@@ -7,6 +7,12 @@ export const setMyBoards = boards => {
     }
 }
 
+export const clearBoards = () => {
+    return {
+      type: "CLEAR_BOARDS"
+    }
+}
+
 // async actions
 export const getMyBoards = () => {
     console.log("hello")

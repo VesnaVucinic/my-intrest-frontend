@@ -24,6 +24,4 @@ const MyBoards = ()  => {
 return boardCards
 }       
 
-
-
 export default MyBoards
