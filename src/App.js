@@ -2,15 +2,19 @@ import React from 'react'
 import './App.css';
 import { getCurrentUser } from "./actions/currentUser"
 import { connect } from 'react-redux';
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Logout from './components/Logout'
-import Home from './components/Home'
-import MainContainer from './components/MainContainer';
+import NavBar from './components/NavBar'
+import Login from './components/Login.js'
+import Signup from './components/Signup.js'
 import MyBoards from './components/MyBoards.js'
-import { Route, Switch, withRouter  } from 'react-router-dom'
-import NotLoggedInNavBar from './components/NotLoggedInNavBar';
-import LoggedInNavBar from './components/LoggedInNavBar'
+import NewBoardForm from './components/NewBoardForm'
+import Home from './components/Home'
+
+import { Route, Switch, withRouter, Link } from 'react-router-dom'
+
+
+import MainContainer from './components/MainContainer';
+import Logout from './components/Logout';
+
 
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
@@ -23,12 +27,13 @@ class App extends React.Component {
     const { loggedIn } = this.props
     return (
       <div className="App">
-         {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
+        { loggedIn ? <NavBar/> : <Home/> }
         <Switch>
-            <Route exact path='/signup' component={Signup}/>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/logout' component={Logout}/>
-            <Route exact path='/boards' component={MyBoards}/>
+          <Route exact path='/signup' render={()=><Signup/>}/>
+          <Route exact path='/login' component={Login}/>
+          {/* <Route exact path='/' render={() => loggedIn ? <MyBoards/> : <Home/>}/> */}
+          <Route exact path='/boards' component={MyBoards}/>
+          <Route exact path='/boards/new' component={NewBoardForm}/>
         </Switch>
       </div>
       
@@ -44,5 +49,6 @@ const mapStateToProps = state => {
   })
 }
 
-export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
+// export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
 // export default connect(mapStateToProps, { getCurrentUser })(App);
+export default connect(mapStateToProps, { getCurrentUser })(App);
