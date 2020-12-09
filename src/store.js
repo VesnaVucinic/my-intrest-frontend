@@ -5,15 +5,19 @@ import thunk from 'redux-thunk'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import myBoards from './reducers/myBoards'
+import newBoardForm from './reducers/newBoardForm'
 
 // just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({
-    users: usersReducer,
+    // users: usersReducer,
+    // currentUser: currentUser, shorthande is just currentUser,
+    //  first currentUser is key and is what I want property to called in Redux, the second currentUser is value and yhat is reducer
+    // that is responsable for that one peace of state
     currentUser,
     loginForm,
     signupForm,
-    myBoards
-
+    myBoards, 
+    newBoardForm
 })
 
 // createStore takes as arguments reducer and redux dev tools
