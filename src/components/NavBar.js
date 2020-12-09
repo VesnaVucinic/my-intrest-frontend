@@ -2,13 +2,29 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Login from './Login.js'
 import Logout from './Logout.js'
+import { NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+// withRouter is just function that will unject router props into component
 
-const NavBar = ({ currentUser }) => {
-  return (
-    <div className="nav">
-      { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
-      { currentUser ? <Logout/> : "" }
+// const NavBar = ({ currentUser }) => {
+//   return (
+//     <div className="nav">
+//       { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
+//       { currentUser ? <Logout/> : "" }
     
+//     </div>
+//   )
+// }
+
+const NavBar = ({ currentUser, loggedIn }) => {
+  return (
+    <div className="NavBar">
+      { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
+      {/* { currentUser ? <Logout/> : <Login/>} */}
+      <NavLink exact activeclass="true" to="/boards">Boards  |</NavLink>
+      <NavLink exact activeclass="true" to="/boards/new">New Board  |</NavLink>
+      { loggedIn ? <Logout/> : null}
+
     </div>
   )
 }
@@ -21,8 +37,9 @@ const NavBar = ({ currentUser }) => {
 
 const mapStateToProps = ({ currentUser }) => {
     return {
-      currentUser
+      currentUser,
+      loggedIn: !!currentUser
     }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default withRouter(connect(mapStateToProps)(NavBar))
