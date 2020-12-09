@@ -56,7 +56,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='light blue' textAlign='center'>
+            <Header as='h2' color='blue' textAlign='center'>
               Sign-up to create your account
           </Header>
             <Form size='large'>
@@ -65,7 +65,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
                 <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange} />
                 <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' onChange={handleInputChange} />
     
-                <Button color='light blue' fluid size='large' onClick={handleSubmit}>
+                <Button color='blue' fluid size='large' onClick={handleSubmit}>
                   Sign Up
                 </Button>
               </Segment>
