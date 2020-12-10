@@ -3,6 +3,9 @@ import './App.css';
 import { getCurrentUser } from "./actions/currentUser"
 import { connect } from 'react-redux';
 import NavBar from './components/NavBar'
+import LoggedInNavBar from './components/LoggedInNavBar'
+import NotLoggedInNavBar from './components/NotLoggedInNavBar'
+
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import MyBoards from './components/MyBoards.js'
@@ -27,7 +30,8 @@ class App extends React.Component {
     const { loggedIn } = this.props
     return (
       <div className="App">
-        { loggedIn ? <NavBar/> : <Home/> }
+        {/* { loggedIn ? <NavBar/> : <Home/> } */}
+        {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
         <Switch>
           <Route exact path='/signup' render={()=><Signup/>}/>
           <Route exact path='/login' component={Login}/>
