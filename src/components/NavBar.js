@@ -1,15 +1,47 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Login from './Login.js'
 import Logout from './Logout.js'
+import { NavLink } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
 
-const NavBar = ({ currentUser }) => {
-  return (
-    <div className="nav">
-      { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
-      { currentUser ? <Logout/> : "" }
+import { withRouter } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
+
+// withRouter is just function that will unject router props into component
+
+// const NavBar = ({ currentUser }) => {
+//   return (
+//     <div className="nav">
+//       { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }
+//       { currentUser ? <Logout/> : "" }
     
-    </div>
+//     </div>
+//   )
+// }
+
+const NavBar = ({ currentUser, loggedIn }) => {
+  return (
+    <Navbar bg="light" variant="light">
+      
+        
+        <Nav>
+        <Navbar.Collapse className="justify-content-center">    
+            <Navbar.Text >
+                { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }  
+            </Navbar.Text>
+        </Navbar.Collapse>  
+            {/* { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" } */}
+            {/* { currentUser ? <Logout/> : <Login/>} */}
+
+          <Navbar.Collapse className="justify-content-end">
+            <NavLink exact activeclass="true" to="/boards">Boards  |</NavLink>
+            <NavLink exact activeclass="true" to="/boards/new">New Board  |</NavLink>
+            { loggedIn ? <Logout/> : null}
+
+         
+      </Navbar.Collapse>
+      </Nav>
+    </Navbar>
   )
 }
 
@@ -21,8 +53,12 @@ const NavBar = ({ currentUser }) => {
 
 const mapStateToProps = ({ currentUser }) => {
     return {
-      currentUser
+      currentUser,
+      loggedIn: !!currentUser
     }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default withRouter(connect(mapStateToProps)(NavBar))
+
+
+

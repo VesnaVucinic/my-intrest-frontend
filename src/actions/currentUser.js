@@ -70,7 +70,7 @@ export const signup = (userInfo, history) => {
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards())
               dispatch(resetSignupForm())
-              history.push('/')
+              // history.push('/')
           }
       })
       .catch(console.log)
@@ -92,6 +92,8 @@ export const getCurrentUser = () => {
           if (response.error) {
             alert(response.error)
           } else {
+            // localStorage.setItem('token', response.jwt)
+
             dispatch(setCurrentUser(response.user.data))
             dispatch(getMyBoards())
           }
@@ -119,3 +121,9 @@ export const logout = () => {
   
 //   }
 // } 
+
+// optimistic thinking 
+// is with creating or editing something I could with thunk but even without thunk I can chose when 
+// I want to make changes to the state of application on frontend.
+// with optimistic thinking is whenever user makes change and trrigers an event
+//  on front end we are update fornt end right away we are not gonna wait a return from the backend 

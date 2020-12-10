@@ -13,7 +13,7 @@ export const clearBoards = () => {
     }
 }
 
-// async actions
+// // async actions
 export const getMyBoards = () => {
     console.log("hello")
     return dispatch => {
@@ -25,13 +25,12 @@ export const getMyBoards = () => {
           })
           .then(r => r.json())
           .then (response => {
-              console.log(response)
+              console.log(response.data)
               if (response.error) {
                   alert(response.error)
               } else {
-                //   localStorage.setItem('token', response.jwt)
+                  console.log(response.data)
                   dispatch(setMyBoards(response.data))
-               
               }
               
           })

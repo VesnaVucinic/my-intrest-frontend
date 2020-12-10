@@ -2,22 +2,42 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from "../actions/currentUser.js"
 import Button from 'react-bootstrap/Button'
+import { withRouter } from 'react-router-dom'
+// import { browserHistory } from 'react-router';
+
+
 
 // I am using importing logout which is action creator;
 // I am using mapsDispetchToProps object which givs mi props that  which I am destructuring and using as a call back
-const Logout = ({ logout }) => {
+const Logout = ({ logout, history }) => {
+  console.log(history);
+
+  // logot is passed as props as result of connect it's used 
+  // shorthend mapDispatchToProps so props.logout I grabed by 
+  // destructuring the incoming argument { logout } and that is what 
+  // I am passing as callbeck to on Submit and when I click the button-form,
+  //  whwn I submit this action creator gets dispatched by redux becuose 
+  // I have thunk which returns the function in const logut return desatch =>   in file actions/currentUser.js
+  //  clear the currentUser and return fetch request which tell the backend clear session/token for me 
   return (
-    <div>
-    <Button variant="light" className="justify-content-end" size="sm" onClick = { logout }>Log Out</Button>
+    // <div>
+    // {/* <Button variant="light" className="justify-content-end" size="sm" onClick = { logout }>Log Out</Button> */}
+    // </div>
     
-    {/* <form onSubmit={logout}>
+    <form onSubmit={(event) =>{
+      event.preventDefault()
+        logout()
+        history.push('/')
+      }
+    }>
       <input type="submit" value="Log Out"/>
-    </form> */}
-    </div>
+    </form>
+    
   )
 }
 
-export default connect(null, { logout } )(Logout)
+// when I connet I don't need the state I need only action that it' all this button { logout } does
+export default withRouter(connect(null, { logout } )(Logout))
 
 // I still need....
 

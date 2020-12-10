@@ -1,28 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout.js'
 import Navbar from 'react-bootstrap/Navbar'
 import { NavLink } from 'react-router-dom'
-import MainContainer from './MainContainer'
+// import MainContainer from './MainContainer'
+import { withRouter } from 'react-router-dom'
+
 // import { Menu, Container } from 'semantic-ui-react'
 // import { NavLink, withRouter } from 'react-router-dom'
 
 
-const LoggedInNavBar = ({ currentUser }) => {
+const LoggedInNavBar = ({ currentUser, loggedIn }) => {
   return (
     <div>
     <Navbar  bg="light" variant="light"> 
-        <NavLink exact activeClassName="active" to="/boards"  >My Boards</NavLink>
-        <Navbar.Collapse className="justify-content-center">    
+    <NavLink exact activeclass="true" to="/boards">Boards  |</NavLink>
+            <NavLink exact activeclass="true" to="/boards/new">New Board  |</NavLink>        <Navbar.Collapse className="justify-content-center">    
             <Navbar.Text >
                 { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }  
             </Navbar.Text>
         </Navbar.Collapse>       
-            { currentUser ? <Logout/> : "" } 
+            {/* { currentUser ? <Logout/> : "" }  */}
+            { loggedIn ? <Logout/> : null}
     </Navbar>
-    <div>
+    {/* <div>
         <MainContainer/>
-    </div>
+    </div> */}
     </div>
   )
 }
@@ -44,11 +47,12 @@ const LoggedInNavBar = ({ currentUser }) => {
 
 const mapStateToProps = ({ currentUser }) => {
     return {
-      currentUser
+      currentUser,
+      loggedIn: !!currentUser
     }
 }
 
-export default connect(mapStateToProps)(LoggedInNavBar)
+export default withRouter(connect(mapStateToProps)(LoggedInNavBar))
 
 // class LoggedInNavBar extends Component {
 //     state = {}

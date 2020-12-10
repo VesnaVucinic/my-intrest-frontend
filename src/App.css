@@ -85,3 +85,11 @@ input.form-control{
   background-color: black
 }
 
+a.active {
+  color: green
+}
+
+.NavBar {
+  display: flex;
+  flex-direction: row
+}
