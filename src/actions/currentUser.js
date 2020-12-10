@@ -70,7 +70,7 @@ export const signup = (userInfo, history) => {
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards())
               dispatch(resetSignupForm())
-              history.push('/')
+              // history.push('/')
           }
       })
       .catch(console.log)

@@ -6,6 +6,7 @@ import { signup } from "../actions/currentUser.js"
 // import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
@@ -17,10 +18,11 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         }
         updateSignupForm(updatedFormInfo)
     }
-
+    console.log(history);
     const handleSubmit = event => {
         event.preventDefault()
-        signup(signupFormData, history)
+        signup(signupFormData)
+        history.push('/')
     }
 
     // return (        
@@ -77,6 +79,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         </Grid>
       )
 
+    
 }
 
 const mapStateToProps = state => {
@@ -85,4 +88,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps, { updateSignupForm,  signup } )(Signup)
+export default withRouter(connect(mapStateToProps, { updateSignupForm,  signup } )(Signup))
