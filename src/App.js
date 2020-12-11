@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import NavBar from './components/NavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import NotLoggedInNavBar from './components/NotLoggedInNavBar'
-
+import Header from './components/Header'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import MyBoards from './components/MyBoards.js'
@@ -32,6 +32,7 @@ class App extends React.Component {
       <div className="App">
         {/* { loggedIn ? <NavBar/> : <Home/> } */}
         {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
+        {/* <Header /> */}
         <Switch>
           <Route exact path='/signup' render={()=><Signup/>}/>
           <Route exact path='/login' component={Login}/>
@@ -47,7 +48,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
+    allBoards: state.allBoards
     // loogdIn is boolean version of state.currentUser, I dont need whole object currentUser but only to know in app is someone logged in. Can be only currentUser in return
     // I am manipulating Redux state and getting only what I need which is weather is someone logged in or not 
   })

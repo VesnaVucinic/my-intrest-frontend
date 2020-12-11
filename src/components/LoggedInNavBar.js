@@ -2,9 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout.js'
 import Navbar from 'react-bootstrap/Navbar'
+import Button from 'react-bootstrap/Button'
 import { NavLink } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
+import {Link} from 'react-router-dom'
 // import MainContainer from './MainContainer'
 import { withRouter } from 'react-router-dom'
+
 
 // import { Menu, Container } from 'semantic-ui-react'
 // import { NavLink, withRouter } from 'react-router-dom'
@@ -14,8 +18,13 @@ const LoggedInNavBar = ({ currentUser, loggedIn }) => {
   return (
     <div>
     <Navbar  bg="light" variant="light"> 
-    <NavLink exact activeclass="true" to="/boards">Boards  |</NavLink>
-            <NavLink exact activeclass="true" to="/boards/new">New Board  |</NavLink>        <Navbar.Collapse className="justify-content-center">    
+      <Nav>
+        <Nav.Link as={Link}   to="/boards">Boards</Nav.Link>
+        <Nav.Link as={Link}   to="/boards/new">New Board</Nav.Link>
+    {/* <Button variant="light" className="justify-content-start" size="sm"><NavLink exact activeclass="true" color="black" to="/boards">Boards</NavLink></Button > */}
+    {/* <Button variant="light" className="justify-content-start" size="sm"><NavLink exact activeclass="true" to="/boards/new">New Board</NavLink></Button>         */}
+      </Nav> 
+        <Navbar.Collapse className="justify-content-center">    
             <Navbar.Text >
                 { currentUser ? <strong> Welcome, {currentUser.attributes.name}</strong> : "" }  
             </Navbar.Text>

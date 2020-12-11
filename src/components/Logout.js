@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { logout } from "../actions/currentUser.js"
 import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom'
-// import { browserHistory } from 'react-router';
 
 
 
@@ -20,17 +19,15 @@ const Logout = ({ logout, history }) => {
   // I have thunk which returns the function in const logut return desatch =>   in file actions/currentUser.js
   //  clear the currentUser and return fetch request which tell the backend clear session/token for me 
   return (
-    // <div>
-    // {/* <Button variant="light" className="justify-content-end" size="sm" onClick = { logout }>Log Out</Button> */}
-    // </div>
-    
     <form onSubmit={(event) =>{
       event.preventDefault()
         logout()
         history.push('/')
       }
     }>
-      <input type="submit" value="Log Out"/>
+      <Button type="submit" variant="light" className="justify-content-end" size="sm" >Log Out</Button>
+      {/* <input type="submit" value="Log Out"/> */}
+
     </form>
     
   )
