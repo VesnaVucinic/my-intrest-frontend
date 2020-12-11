@@ -7,6 +7,13 @@ export const setMyBoards = boards => {
     }
 }
 
+export const setAllBoards = boards => {
+    return {
+        type: "SET_All_BOARDS",
+        boards
+    }
+}
+
 export const clearBoards = () => {
     return {
       type: "CLEAR_BOARDS"
@@ -17,20 +24,52 @@ export const clearBoards = () => {
 export const getMyBoards = () => {
     console.log("hello")
     return dispatch => {
+        const token = localStorage.token        
+        // debugger
+
         return fetch("http://127.0.0.1:3001/api/v1/boards",  {
             method: "GET",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer ' + token
+
             },
           })
-          .then(r => r.json())
+          .then(response => response.json())
           .then (response => {
-              console.log(response.data)
+              console.log(response)
               if (response.error) {
                   alert(response.error)
               } else {
                   console.log(response.data)
                   dispatch(setMyBoards(response.data))
+              }
+              
+          })
+          .catch(console.log)
+    }
+} 
+
+export const getAllBoards = () => {
+    console.log("hello")
+    return dispatch => {
+        // debugger
+
+        return fetch("http://127.0.0.1:3001/api/v1/boards",  {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+
+            },
+          })
+          .then(response => response.json())
+          .then (response => {
+              console.log(response)
+              if (response.error) {
+                  alert(response.error)
+              } else {
+                  console.log(response.data)
+                  dispatch(setAllBoards(response.data))
               }
               
           })
