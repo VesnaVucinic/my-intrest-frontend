@@ -7,16 +7,17 @@ export const setMyBoards = boards => {
     }
 }
 
-export const setAllBoards = boards => {
-    return {
-        type: "SET_All_BOARDS",
-        boards
-    }
-}
 
 export const clearBoards = () => {
     return {
       type: "CLEAR_BOARDS"
+    }
+}
+
+export const addBoard = board => {
+    return {
+        type: "ADD_BOARD",
+        board
     }
 }
 
@@ -50,29 +51,27 @@ export const getMyBoards = () => {
     }
 } 
 
-export const getAllBoards = () => {
-    console.log("hello")
-    return dispatch => {
-        // debugger
 
-        return fetch("http://127.0.0.1:3001/api/v1/boards",  {
-            method: "GET",
+
+
+export const createBoard = boardData => {
+    return dispatch => {
+        const token = localStorage.token
+        const sendableBoardData = {
+            name: boardData.name,
+            image_url: boardData.imageUrl,
+            user_id: boardData.userId
+        }        
+        return fetch("http://127.0.0.1:3001/api/v1/boards", {
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
-
+              'Authorization': 'Bearer ' + token
             },
-          })
-          .then(response => response.json())
-          .then (response => {
-              console.log(response)
-              if (response.error) {
-                  alert(response.error)
-              } else {
-                  console.log(response.data)
-                  dispatch(setAllBoards(response.data))
-              }
-              
-          })
-          .catch(console.log)
+            body: JSON.stringify(sendableBoardData)
+        }) 
+        .then(r => r.json())
+        .then(console.log)
+        .catch(console.log)
     }
-} 
+}
