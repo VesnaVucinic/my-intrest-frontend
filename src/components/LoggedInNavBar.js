@@ -17,7 +17,7 @@ import { withRouter } from 'react-router-dom'
 const LoggedInNavBar = ({ currentUser, loggedIn }) => {
   return (
     <div>
-    <Navbar  bg="light" variant="light"> 
+    <Navbar  bg="light" variant="light" className="Navbar"> 
       <Nav>
         <Nav.Link as={Link}   to="/boards">Boards</Nav.Link>
         <Nav.Link as={Link}   to="/boards/new">New Board</Nav.Link>
