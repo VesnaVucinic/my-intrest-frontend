@@ -6,7 +6,7 @@ import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import myBoards from './reducers/myBoards'
 import newBoardForm from './reducers/newBoardForm'
-// import allBoards from './reducers/allBoards'
+import allBoards from './reducers/allBoards'
 
 
 // just displaying different syntax options here (lines 8 and 9)
@@ -20,7 +20,7 @@ const reducer = combineReducers({
     signupForm,
     myBoards, 
     newBoardForm,
-    // allBoards
+    allBoards
 })
 
 // createStore takes as arguments reducer and redux dev tools
