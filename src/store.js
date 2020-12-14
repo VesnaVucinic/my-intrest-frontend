@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import myBoards from './reducers/myBoards'
-import newBoardForm from './reducers/newBoardForm'
+import boardForm from './reducers/boardForm'
 import allBoards from './reducers/allBoards'
 
 
@@ -19,7 +19,7 @@ const reducer = combineReducers({
     loginForm,
     signupForm,
     myBoards, 
-    newBoardForm,
+    boardForm,
     allBoards
 })
 
