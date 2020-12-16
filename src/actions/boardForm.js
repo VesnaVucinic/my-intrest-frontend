@@ -19,7 +19,7 @@ export const resetBoardForm = () => {
 export const setFormDataForEdit = board => {
     const boardFormData = {
         name: board.attributes.name,
-        imageUrl: board.attributes.imageUrl
+        imageUrl: board.attributes.image_url
     }
     return {
         type: "SET_FORM_DATA_FOR_EDIT",
