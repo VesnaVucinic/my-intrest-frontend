@@ -1,7 +1,6 @@
 import React from 'react';
 // 1. We first grabthe action creator 
 import { updateBoardForm } from "../actions/boardForm.js"
-import { createBoard } from  '../actions/myBoards'
 import { connect } from 'react-redux'
 import Container from 'react-bootstrap/Container'
 
@@ -12,7 +11,6 @@ const BoardForm = ({ formData, updateBoardForm, userId, board, handleSubmit, edi
    const{ name, imageUrl } = formData
 
     const handleChange= event =>{
-    console.log("trigger Handle change")
        const { name, value } = event.target
     // 4. this is not an invocation of just the action creator,
     // it's now Redux dispatching the action  built by the actions
@@ -26,7 +24,7 @@ const BoardForm = ({ formData, updateBoardForm, userId, board, handleSubmit, edi
           <div className="BoardForm">
             <form onSubmit={event => {
                 event.preventDefault()
-                handleSubmit(formData)
+                handleSubmit(formData, userId)
             }}>
                 <input
                     name="name"
@@ -51,12 +49,12 @@ const BoardForm = ({ formData, updateBoardForm, userId, board, handleSubmit, edi
     };
 const mapStateToProps = state => {
     // const { name, imageUrl } = state.BoardForm
-    const userId = state.currentUser ? state.currentUser.id : ""
+    // const userId = state.currentUser ? state.currentUser.id : ""
     return {
         // name,
         // imageUrl
         formData: state.boardForm,
-        userId
+        userId: state.currentUser ? state.currentUser.id : ""
     }
 }
 // 2. We pass the action creator to redux's connect function
