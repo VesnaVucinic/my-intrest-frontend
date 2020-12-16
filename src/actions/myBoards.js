@@ -28,6 +28,13 @@ export const updateBoardSuccess = board => {
     }
 }
 
+export const deleteBoardSuccess = boardId => {
+    return {
+      type: "DELETE_BOARD",
+      boardId
+    }
+  }
+
 // // async actions
 export const getMyBoards = () => {
     console.log("hello")
@@ -57,7 +64,6 @@ export const getMyBoards = () => {
           .catch(console.log)
     }
 } 
-
 
 export const createBoard = (boardData, history) => {
     return dispatch => {
@@ -118,11 +124,39 @@ export const updateBoard = (boardData,history) => {
             // add new trip to store: dispatch action by invocing that action creator with the information I need sddBoard 
             // that returns to me object I actualy despatching which will then trriger or invoke
             // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
-            dispatch(resetBoardForm())
             history.push(`/boards/${resp.data.id}`)
+
+            // dispatch(resetBoardForm())
         }
         })
 
         .catch(console.log)
     }
 }
+
+export const deleteBoard = (boardId, history) => {
+    return dispatch => {
+      const token = localStorage.token
+      return fetch(`http://127.0.0.1:3001/api/v1/boards/${boardId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + token
+        }
+      })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.error) {
+            alert(resp.error)
+          } else {
+            dispatch(deleteBoardSuccess(boardId))
+            history.push(`/boards`)
+            // go somewhere else --> board show?
+            // add the new board to the store
+          }
+        })
+        .catch(console.log)
+  
+    }
+  
+  }
