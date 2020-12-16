@@ -20,6 +20,7 @@ import { Route, Switch, withRouter, Link } from 'react-router-dom'
 
 import MainContainer from './components/MainContainer';
 import Logout from './components/Logout';
+import EditBoardFormWrapper from './components/EditBoardFormWrapper';
 
 
 class App extends React.Component {
@@ -60,7 +61,7 @@ class App extends React.Component {
           <Route exact path='/boards/:id/edit' render={props => {
             const board = myBoards.find(board => board.id === props.match.params.id) 
             // dispatch updateForn -> trip, react will not alowed change of state inside render method that need to be pure
-            return <BoardForm board={board} {...props}/>
+            return <EditBoardFormWrapper board={board} {...props}/>
           }
         }/>
         </Switch>
@@ -84,4 +85,4 @@ const mapStateToProps = state => {
 
 // export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
 // export default connect(mapStateToProps, { getCurrentUser })(App);
-export default withRouter(connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
