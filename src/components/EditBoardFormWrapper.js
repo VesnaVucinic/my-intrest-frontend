@@ -1,12 +1,8 @@
 import React from 'react';
 import BoardForm from './BoardForm'
-import { updateBoard, deleteBoard  } from  '../actions/myBoards'
+import { updateBoard  } from  '../actions/myBoards'
 import { setFormDataForEdit, resetBoardForm  } from '../actions/boardForm'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-
-
-
 import { connect } from 'react-redux'
 
 class EditBoardFormWrapper extends React.Component {
@@ -41,15 +37,11 @@ class EditBoardFormWrapper extends React.Component {
 
     }
     render () {
-        const { history, deleteBoard, board } = this.props
-        const boardId = board ? board.id : null
-        return  <Container >
+        const { history  } = this.props
+        return  <Container>
                     <BoardForm editMode history={history} handleSubmit={this.handleSubmit}/>
-                    <br/>
-                    <Button variant="light" className="justify-content-end" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
-
-                </Container >
+                </Container>
     }
 };
 
-export default connect(null, { updateBoard, setFormDataForEdit, resetBoardForm, deleteBoard  })(EditBoardFormWrapper);
+export default connect(null, { updateBoard, setFormDataForEdit, resetBoardForm  })(EditBoardFormWrapper);
