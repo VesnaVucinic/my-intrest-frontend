@@ -5,16 +5,24 @@ export const setAllBoards = boards => {
     }
 }
 
+export const clearAllBoards = () => {
+    return {
+      type: "CLEAR_ALL_BOARDS"
+    }
+}
+
 export const getAllBoards = () => {
     console.log("hello")
     return dispatch => {
         // debugger
+        const token = localStorage.token        
 
-        return fetch("http://127.0.0.1:3001/api/v1/boards",  {
+        return fetch("http://127.0.0.1:3001/api/v1/all_boards",  {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-
+              'Authorization': 'Bearer ' + token
+ 
             },
           })
           .then(response => response.json())
