@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import {Link} from 'react-router-dom'
 // import MainContainer from './MainContainer'
+import AllBoards from './AllBoards'
 import { withRouter } from 'react-router-dom'
 
 
@@ -19,7 +20,8 @@ const LoggedInNavBar = ({ currentUser, loggedIn }) => {
     <div>
     <Navbar  bg="light" variant="light" className="Navbar"> 
       <Nav>
-        <Nav.Link as={Link}   to="/boards">Boards</Nav.Link>
+        <Nav.Link as={Link}   to="/all-boards">All Boards</Nav.Link>
+        <Nav.Link as={Link}   to="/boards">My Boards</Nav.Link>
         <Nav.Link as={Link}   to="/boards/new">New Board</Nav.Link>
     {/* <Button variant="light" className="justify-content-start" size="sm"><NavLink exact activeclass="true" color="black" to="/boards">Boards</NavLink></Button > */}
     {/* <Button variant="light" className="justify-content-start" size="sm"><NavLink exact activeclass="true" to="/boards/new">New Board</NavLink></Button>         */}
@@ -32,9 +34,9 @@ const LoggedInNavBar = ({ currentUser, loggedIn }) => {
             {/* { currentUser ? <Logout/> : "" }  */}
             { loggedIn ? <Logout/> : null}
     </Navbar>
-    {/* <div>
-        <MainContainer/>
-    </div> */}
+    <div>
+        {/* <AllBoards/> */}
+    </div>
     </div>
   )
 }
