@@ -1,6 +1,8 @@
 import { resetLoginForm } from "./loginForm.js"
 import { resetSignupForm } from "./signupForm.js"
 import { getMyBoards, clearBoards } from "./myBoards.js"
+import { getAllBoards, clearAllBoards } from "./allBoards.js"
+
 
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -38,6 +40,8 @@ export const login = (userInfo, history) => {
               localStorage.setItem('token', response.jwt)
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards()) 
+              dispatch(getAllBoards()) 
+
               dispatch(resetLoginForm())
               history.push('/')
           }
@@ -69,6 +73,8 @@ export const signup = (userInfo, history) => {
               localStorage.setItem('token', response.jwt)
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards())
+              dispatch(getAllBoards()) 
+
               dispatch(resetSignupForm())
               // history.push('/')
           }
@@ -96,6 +102,8 @@ export const getCurrentUser = () => {
 
             dispatch(setCurrentUser(response.user.data))
             dispatch(getMyBoards())
+            dispatch(getAllBoards()) 
+
           }
         })
         .catch(console.log)
@@ -108,6 +116,8 @@ export const logout = () => {
     localStorage.removeItem("token")
     dispatch(clearCurrentUser())
     dispatch(clearBoards())
+    dispatch(clearAllBoards())
+
     // return fetch('http://localhost:3001/api/v1/logout', {
     //   method: "DELETE"
     // })
