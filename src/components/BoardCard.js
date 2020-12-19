@@ -15,6 +15,7 @@ const BoardCard = ({ board, history, deleteBoard }) => {
         <div>
         <Container>
             <h4>{board.attributes.name}</h4>
+            <h5>Uploaded by {board.attributes.user.name}</h5>
             <img src={board.attributes.image_url} hight="150" width="150"  alt="..."></img><br/><br/>
             <Link to={`/boards/${board.id}/edit`}>Edit this board</Link><br/>
             <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
