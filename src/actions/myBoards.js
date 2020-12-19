@@ -91,7 +91,9 @@ export const createBoard = (boardData, history) => {
             // that returns to me object I actualy despatching which will then trriger or invoke
             // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
             dispatch(resetBoardForm())
+            history.push(`/all-boards`)
             history.push(`/boards/${resp.data.id}`)
+
         }
         })
 
