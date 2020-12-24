@@ -69,7 +69,7 @@ export const signup = (userInfo, history) => {
           if(response.error) {
               alert(response.error)
           } else {
-              console.log(response.user.data)
+              console.log(response.user.data) 
               localStorage.setItem('token', response.jwt)
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards())
@@ -85,7 +85,8 @@ export const signup = (userInfo, history) => {
 
 export const getCurrentUser = () => {
     return dispatch => {
-      const token = localStorage.token
+      // const token = localStorage.token
+      const token = localStorage.getItem("token")
       return fetch("http://127.0.0.1:3001/api/v1/get_current_user", {
         method: "GET",
         headers: {

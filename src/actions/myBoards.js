@@ -39,7 +39,9 @@ export const deleteBoardSuccess = boardId => {
 export const getMyBoards = () => {
     console.log("hello")
     return dispatch => {
-        const token = localStorage.token        
+        // const token = localStorage.token    
+        const token = localStorage.getItem("token")
+    
         // debugger
 
         return fetch("http://127.0.0.1:3001/api/v1/boards",  {
