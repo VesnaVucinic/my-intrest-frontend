@@ -24,6 +24,12 @@ import MainContainer from './components/MainContainer';
 import Logout from './components/Logout';
 import EditBoardFormWrapper from './components/EditBoardFormWrapper';
 import allBoards from './reducers/allBoards';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+
+
 
 
 class App extends React.Component {
@@ -53,7 +59,7 @@ class App extends React.Component {
           like: <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           ?then I dont need withRouter*/}
           <Route exact path='/boards/:id' render={props => {
-          //  I need to pass dowm attributes of board and obj that contains that info is my trip obj which I need to get from state 
+          //  I need to pass down attributes of board and obj that contains that info is my trip obj which I need to get from state 
           // router props that givs me ability to look at the parametars from the URL and grab the one I need and that is match: match.params.id
           // match have params that is grabing all the dynamic peaces of URL whose name is defined on the end of URL in this case :id
           //  dynamic part of URL is captured and stored in an match obj called params the key is whwtever I called in this case id
@@ -66,7 +72,18 @@ class App extends React.Component {
           <Route exact path='/boards/:id/edit' render={props => {
             const board = myBoards.find(board => board.id === props.match.params.id) 
             // dispatch updateForn -> trip, react will not alowed change of state inside render method that need to be pure
-            return <EditBoardFormWrapper board={board} {...props}/>
+            return (
+                      <Container>
+                         <Row>
+                          <Col sm={8}>
+                            <BoardCard board={board} {...props}/>
+                          </Col> 
+                          <Col sm={4}>  
+                            <EditBoardFormWrapper board={board} {...props}/>
+                          </Col>
+                        </Row>
+                      </Container>
+                    )
           }
           }/>
           <Route exact path='/all-boards' component={AllBoards}/>
