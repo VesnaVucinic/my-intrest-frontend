@@ -1,41 +1,15 @@
 .App {
-  text-align: left;
+  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #053ca8;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 .btn-primary a{
   color: black;
   font-weight: 700;
@@ -114,8 +88,13 @@ a.active {
 }
 
 img {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin-top: 20px;
+    /* max-height: 120px;
+  max-width: 120px;
+  width: auto;
+  height: auto; */
+
     /* padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
@@ -126,4 +105,37 @@ img {
 .BoardForm {
   margin-top: 20px;
 }
+.flex-container {
+  display: flex;
+  height: 600px;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
 
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 335px;
+  margin: 10px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-s48-ted-0138-jj_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b3ad06f0dcddefc5d8fdeb1a4d90e3a3");
+background-size: cover;
+background-repeat: repeat-y;
+height: 100%;
+font-family: 'Numans', sans-serif;
+} */
+
+.card{
+  margin-top: 50px;
+  margin-bottom: auto;
+  margin-right: 10px;
+  margin-right: 10px;
+  width: 400px;
+  background-color: rgba(27, 30, 31, 0.034) !important;
+}
