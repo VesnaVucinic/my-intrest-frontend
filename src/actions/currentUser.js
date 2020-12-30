@@ -26,7 +26,7 @@ export const login = (userInfo, history) => {
       
       method: "POST",
       headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
       },
       body: JSON.stringify( userInfo
       )
@@ -91,8 +91,8 @@ export const getCurrentUser = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token
-        },
+          'Authorization': 'Bearer ' + token
+        }, 
       })
         .then(response => response.json())
         .then(response => {
