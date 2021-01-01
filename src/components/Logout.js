@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
 // I am using importing logout which is action creator;
 // I am using mapsDispetchToProps object which givs mi props that  which I am destructuring and using as a call back
 const Logout = ({ logout, history }) => {
-  console.log(history);
+  // console.log(history);
 
   // logot is passed as props as result of connect it's used 
   // shorthend mapDispatchToProps so props.logout I grabed by 

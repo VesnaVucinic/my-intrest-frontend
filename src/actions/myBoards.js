@@ -37,7 +37,7 @@ export const deleteBoardSuccess = boardId => {
 
 // // async actions
 export const getMyBoards = () => {
-    console.log("hello")
+    // console.log("hello")
     return dispatch => {
         // const token = localStorage.token    
         const token = localStorage.getItem("token")
@@ -54,11 +54,11 @@ export const getMyBoards = () => {
           })
           .then(response => response.json())
           .then (response => {
-              console.log(response)
+              // console.log(response)
               if (response.error) {
                   alert(response.error)
               } else {
-                  console.log(response.data)
+                  // console.log(response.data)
                   dispatch(setMyBoards(response.data))
               }
               

@@ -14,7 +14,7 @@ const BoardCard = ({ board, history, deleteBoard }) => {
         board ?
         <div>
             <Container>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '22rem' }}>
                     <Card.Img variant="top" src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
                     <Card.Body>
                         <Card.Title>{board.attributes.name}</Card.Title>

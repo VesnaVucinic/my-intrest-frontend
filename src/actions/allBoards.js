@@ -5,6 +5,13 @@ export const setAllBoards = boards => {
     }
 }
 
+// export const addBoardToMyBoards = board => {
+//     return {
+//         type: "ADD_BOARD_TO_MY_BOARDS",
+//         board
+//     }
+// }
+
 export const clearAllBoards = () => {
     return {
       type: "CLEAR_ALL_BOARDS"
@@ -12,7 +19,7 @@ export const clearAllBoards = () => {
 }
 
 export const getAllBoards = () => {
-    console.log("hello")
+    // console.log("hello")
     return dispatch => {
         // debugger
         const token = localStorage.token        
@@ -27,11 +34,11 @@ export const getAllBoards = () => {
           })
           .then(response => response.json())
           .then (response => {
-              console.log(response)
+            //   console.log(response)
               if (response.error) {
                   alert(response.error)
               } else {
-                  console.log(response.data)
+                //   console.log(response.data)
                   dispatch(setAllBoards(response.data))
               }
               

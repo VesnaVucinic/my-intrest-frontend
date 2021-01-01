@@ -6,6 +6,8 @@ export default (state = initialState, action) => {
             return action.boards
         case "ADD_BOARD":
             return state.concat(action.board)
+        case "ADD_FAVORITE_BOARD":
+            return state.concat(action.board)
         case "UPDATE_BOARD":
             return state.map(board => board.id === action.board.id ? action.board : board) 
         case "DELETE_BOARD":

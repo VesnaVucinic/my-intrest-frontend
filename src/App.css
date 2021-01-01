@@ -121,21 +121,31 @@ img {
   font-size: 20px;
 }
 
-/* @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
+/* .body{
 background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-s48-ted-0138-jj_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b3ad06f0dcddefc5d8fdeb1a4d90e3a3");
 background-size: cover;
 background-repeat: repeat-y;
 height: 100%;
-font-family: 'Numans', sans-serif;
 } */
 
 .card{
   margin-top: 50px;
   margin-bottom: auto;
-  margin-right: 10px;
-  margin-right: 10px;
-  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  /* margin-right: 20px;
+  margin-right: 20px; */
+  /* width: 500px; */
   background-color: rgba(27, 30, 31, 0.034) !important;
+}
+
+.boardCard {
+  text-align: left;
+  margin-top: 50px;
+}
+
+.newBoard {
+  margin-top: 50px;
+
 }

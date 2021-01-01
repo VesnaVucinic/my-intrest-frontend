@@ -35,7 +35,7 @@ import Col from 'react-bootstrap/Col'
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
   componentDidMount() {
-    console.log("hello")
+    // console.log("hello")
     this.props.getCurrentUser()
   }
 
@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* { loggedIn ? <NavBar/> : <Home/> } */}
-        {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
+        {loggedIn ? <LoggedInNavBar/>: <NotLoggedInNavBar/>}
         
         {/* <Header /> */}
         <Switch>
@@ -75,11 +75,13 @@ class App extends React.Component {
             return (
                       <Container>
                          <Row>
-                          <Col sm={8}>
+                          <Col >
                             <BoardCard board={board} {...props}/>
+                            {/* <EditBoardFormWrapper board={board} {...props}/> */}
                           </Col> 
-                          <Col sm={4}>  
+                          <Col >  
                             <EditBoardFormWrapper board={board} {...props}/>
+                            {/* <BoardCard board={board} {...props}/>  */}
                           </Col>
                         </Row>
                       </Container>
