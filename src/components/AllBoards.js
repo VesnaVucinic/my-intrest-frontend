@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+// import { addBoardToMyBoards } from '../actions/allBoards'
 
 
 const AllBoards = props => {

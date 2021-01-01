@@ -21,7 +21,7 @@ const NewBoardFormWrapper = ({ history, createBoard }) => {
 
     }
 
-    return <BoardForm history={history} handleSubmit={handleSubmit}/>
+    return <BoardForm  history={history} handleSubmit={handleSubmit}/>
   
 };
 

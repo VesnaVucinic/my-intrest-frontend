@@ -6,6 +6,8 @@ export default (state = initialState, action) => {
             return action.boards
         case "ADD_BOARD":
             return state.concat(action.board)
+        case "ADD_BOARD_TO_MY_BOARDS":
+            return state.concat(action.board)
         case "CLEAR_ALL_BOARDS":
             return initialState
         default:

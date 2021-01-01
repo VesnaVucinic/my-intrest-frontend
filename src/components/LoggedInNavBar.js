@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout.js'
 import Navbar from 'react-bootstrap/Navbar'
@@ -11,7 +11,7 @@ import AllBoards from './AllBoards'
 import { withRouter } from 'react-router-dom'
 
 
-// import { Menu, Container } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 // import { NavLink, withRouter } from 'react-router-dom'
 
 
@@ -68,29 +68,58 @@ export default withRouter(connect(mapStateToProps)(LoggedInNavBar))
 // class LoggedInNavBar extends Component {
 //     state = {}
   
-//     handleItemClick = (e, { name, currentUser }) => this.setState({ activeItem: name, user: currentUser })
+//     handleItemClick = ({ name, currentUser  }) => this.setState({ activeItem: name })
   
 //     render() {
 //       const { activeItem } = this.state
   
 //       return (
 //         <Menu>
-//           <Menu.Item
+//         <Menu.Item
+//           as={NavLink} to="/all-boards"
+//           name='All Boards'
+//           active={activeItem === 'all-boards'}
+//           onClick={this.handleItemClick}
+//         >
+//           All Boards
+//         </Menu.Item>
+
+//         <Menu.Item
+//           as={NavLink} to="/boards"
+//           name='My Boards'
+//           active={activeItem === 'boards'}
+//           onClick={this.handleItemClick}
+//         >
+//           My Boards
+//         </Menu.Item>
+
+//         <Menu.Item
+//           as={NavLink} to="/boards/new"
+//           name='New Board'
+//           active={activeItem === '/boards/new'}
+//           onClick={this.handleItemClick}
+//         >
+//           New Board
+//         </Menu.Item>
+        
+//           {/* <Menu.Item
 //             as={NavLink} to="/logout"
 //             name='Log Out'
 //             active={activeItem === 'logout'}
-//             onClick={this.handleItemClick}
+//             onClick= { currentUser ? <Logout/> : "" }
 //           >
-//             Log out
-//           </Menu.Item>
-//         </Menu>
+//             Log Out
+//           </Menu.Item> */}
+//           </Menu>
+       
 //       )
 //     }
 // }
-//     const mapStateToProps = ({ currentUser }) => {
-//         return {
-//           currentUser
-//         }
-//     }
+// const mapStateToProps = ({ currentUser }) => {
+//   return {
+//     currentUser,
+//     loggedIn: !!currentUser
+//   }
+// }
     
-// export default connect(mapStateToProps)(LoggedInNavBar)
+// export default withRouter(connect(mapStateToProps)(LoggedInNavBar))

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 
+
 const MyBoards = props => {
     const boardCards = props.boards.length > 0  ? 
     props.boards.map(board => (

@@ -5,6 +5,13 @@ export const setAllBoards = boards => {
     }
 }
 
+export const addBoardToMyBoards = board => {
+    return {
+        type: "ADD_BOARD_TO_MY_BOARDS",
+        board
+    }
+}
+
 export const clearAllBoards = () => {
     return {
       type: "CLEAR_ALL_BOARDS"

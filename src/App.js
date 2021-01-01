@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* { loggedIn ? <NavBar/> : <Home/> } */}
-        {loggedIn ? <LoggedInNavBar/> : <NotLoggedInNavBar/>}
+        {loggedIn ? <LoggedInNavBar/>: <NotLoggedInNavBar/>}
         
         {/* <Header /> */}
         <Switch>
@@ -75,11 +75,13 @@ class App extends React.Component {
             return (
                       <Container>
                          <Row>
-                          <Col sm={8}>
+                          <Col >
                             <BoardCard board={board} {...props}/>
+                            {/* <EditBoardFormWrapper board={board} {...props}/> */}
                           </Col> 
-                          <Col sm={4}>  
+                          <Col >  
                             <EditBoardFormWrapper board={board} {...props}/>
+                            {/* <BoardCard board={board} {...props}/>  */}
                           </Col>
                         </Row>
                       </Container>
