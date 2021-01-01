@@ -132,9 +132,11 @@ height: 100%;
 .card{
   margin-top: 50px;
   margin-bottom: auto;
-  margin-right: 10px;
-  margin-right: 10px;
-  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  /* margin-right: 20px;
+  margin-right: 20px; */
+  /* width: 500px; */
   background-color: rgba(27, 30, 31, 0.034) !important;
 }
 

@@ -18,7 +18,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         }
         updateSignupForm(updatedFormInfo)
     }
-    console.log(history);
+    // console.log(history);
     const handleSubmit = event => {
         event.preventDefault()
         signup(signupFormData)

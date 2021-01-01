@@ -20,7 +20,7 @@ export const clearCurrentUser = () => {
 }
 // asynchronous action creators
 export const login = (userInfo, history) => {
-  console.log(userInfo)
+  // console.log(userInfo)
   return dispatch => {
     return fetch("http://127.0.0.1:3001/api/v1/login", {
       

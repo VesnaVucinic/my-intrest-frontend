@@ -35,7 +35,7 @@ import Col from 'react-bootstrap/Col'
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
   componentDidMount() {
-    console.log("hello")
+    // console.log("hello")
     this.props.getCurrentUser()
   }
 
