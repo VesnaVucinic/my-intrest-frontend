@@ -1,6 +1,6 @@
 const initialState = {
     name: "",
-    imageUrl: ""
+    imageUrl: "",
   }
   
   export default (state=initialState, action) => {

@@ -68,3 +68,33 @@ export default connect(mapStateToProps)(MyBoards)
 // }       
 
 // export default MyBoards
+
+
+// const BoardCard = ({ board, history, deleteBoard, likeBoard }) => {
+//     const boardId = board ? board.id : null
+//     console.log (board)
+
+//     return (
+//         board ?
+//         <div>
+//             <Container>
+//                 <Card style={{ width: '22rem' }}>
+//                     <Card.Img variant="top" src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
+//                     <Card.Body>
+//                         <Card.Title>{board.attributes.name}</Card.Title>
+//                         <Card.Text>Uploaded by {board.attributes.user.name} <br/>
+//                             <Link to={`/boards/${board.id}/edit`}>Edit this board</Link>
+//                         </Card.Text>
+//                         <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
+//                         <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>Like</Button> {board.attributes.likes}
+
+//                     </Card.Body>
+//                 </Card>
+//             </Container>
+//         </div>:
+//         <p>This the the Board Card with no board!</p>
+        
+//     )
+// }
+
+// export default connect(null, { deleteBoard, likeBoard })(BoardCard)
