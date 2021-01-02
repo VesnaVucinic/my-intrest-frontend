@@ -15,6 +15,15 @@ export default (state = initialState, action) => {
             return state.filter(board => board.id === action.boardId ? false : true)           
         case "CLEAR_BOARDS":
             return initialState
+        case "LIKE_BOARD":
+            // return state.map(board => {
+            //     if(board.id === action.board.id) {
+            //         return action.board
+            //     } else {
+            //         return board
+            //     }
+            // })
+            return state.map(board => board.id === action.board.id ? action.board : board) 
         default:
             return state   
     }
