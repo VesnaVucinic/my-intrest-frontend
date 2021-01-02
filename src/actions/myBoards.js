@@ -33,7 +33,14 @@ export const deleteBoardSuccess = boardId => {
       type: "DELETE_BOARD",
       boardId
     }
+}
+
+export const addLikes = board => {
+  return {
+    type: "LIKE_BOARD",
+    board
   }
+}
 
 // // async actions
 export const getMyBoards = () => {
@@ -103,7 +110,8 @@ export const createBoard = (boardData, history) => {
     }
 }
 
-export const updateBoard = (boardData,history) => {
+export const updateBoard = (boardData, history) => {
+  console.log(boardData)
     return dispatch => {
         const token = localStorage.token
         const sendableBoardData = {
@@ -155,12 +163,38 @@ export const deleteBoard = (boardId, history) => {
           } else {
             dispatch(deleteBoardSuccess(boardId))
             history.push(`/boards`)
+            history.push(`/all_boards`)
             // go somewhere else --> board show?
             // add the new board to the store
           }
         })
         .catch(console.log)
-  
     }
-  
+}
+
+export const likeBoard = (boardData, history) => {
+  console.log(boardData)
+  const token = localStorage.token
+  const updateLikeBoard = {
+    ...boardData, 
+    likes: boardData.attributes.likes + 1 
   }
+  return dispatch => {
+    return fetch(`http://127.0.0.1:3001/api/v1/boards/${boardData.id}`, {
+      method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({board: updateLikeBoard })
+    })
+    .then(r => r.json())
+    .then(response => {
+      console.log(response.data)
+      dispatch(addLikes(response.data))
+      history.push(`/all_boards`)
+      
+    })
+    .catch(error => console.log(error))
+  }
+}
