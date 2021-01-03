@@ -6,9 +6,11 @@ import Button from 'react-bootstrap/Button'
 // import { addBoardToMyBoards } from '../actions/allBoards'
 // import { createFavoriteBoard } from '../actions/favoriteBoards'
 import { likeBoard } from '../actions/myBoards'
+// import { withRouter } from 'react-router-dom'
 
 
-const AllBoards = props => {
+
+const AllBoards = (props) => {
     const allBoardsCards = props.boards.length > 0  
     ? 
         props.boards.map(board => (
@@ -20,8 +22,7 @@ const AllBoards = props => {
                         <Card.Title>{board.attributes.name}</Card.Title>
                         <Card.Text>Uploaded by {board.attributes.user.name}</Card.Text>
                         {/* <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>createFavoriteBoard(board)}>Get this board</Button> */}
-                        <Button variant="light" className="justify-content-cener" size="sm" onClick={() => props.likeBoard(board)}> ❤️ </Button> {board.attributes.likes}
-
+                        <Button variant="light" size="sm" onClick={() => props.likeBoard(board)}> ❤️ </Button> {board.attributes.likes}
                     </Card.Body>        
                 </Card>
             )) 

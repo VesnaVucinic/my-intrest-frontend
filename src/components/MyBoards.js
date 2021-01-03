@@ -13,6 +13,7 @@ const MyBoards = props => {
                                         <Card.Body>
                                             <Card.Title>{board.attributes.name}</Card.Title>
                                             <Card.Text>Uploaded by {board.attributes.user.name}</Card.Text>
+                                            <Card.Text style={{justifyContent: "center", alignItems: "center"}}> ❤️ {board.attributes.likes}</Card.Text>
                                         </Card.Body>        
                                     </Card>
                                

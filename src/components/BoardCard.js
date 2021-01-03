@@ -26,8 +26,8 @@ class BoardCard extends Component {
                             <Card.Text>Uploaded by {board.attributes.user.name} <br/>
                                 <Link to={`/boards/${board.id}/edit`}>Edit this board</Link>
                             </Card.Text>
-                            <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
-                            <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>❤️</Button> {board.attributes.likes}
+                            <Button variant="light" className="justify-content-center" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button><br/>
+                            <Button variant="light" className="justify-content-center" size="sm" onClick={() => likeBoard(board)}>❤️</Button> {board.attributes.likes}
     
                         </Card.Body>
                     </Card>
