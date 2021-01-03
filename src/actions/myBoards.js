@@ -136,6 +136,7 @@ export const updateBoard = (boardData, history) => {
             // add new trip to store: dispatch action by invocing that action creator with the information I need sddBoard 
             // that returns to me object I actualy despatching which will then trriger or invoke
             // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
+            history.push(`/all-boards`)
             history.push(`/boards/${resp.data.id}`)
 
             // dispatch(resetBoardForm())
@@ -163,7 +164,7 @@ export const deleteBoard = (boardId, history) => {
           } else {
             dispatch(deleteBoardSuccess(boardId))
             history.push(`/boards`)
-            history.push(`/all_boards`)
+            // history.push(`/all_boards`)
             // go somewhere else --> board show?
             // add the new board to the store
           }
@@ -172,7 +173,7 @@ export const deleteBoard = (boardId, history) => {
     }
 }
 
-export const likeBoard = (boardData, history) => {
+export const likeBoard = (boardData) => {
   console.log(boardData)
   const token = localStorage.token
   const updateLikeBoard = {
@@ -191,9 +192,7 @@ export const likeBoard = (boardData, history) => {
     .then(r => r.json())
     .then(response => {
       console.log(response.data)
-      dispatch(addLikes(response.data))
-      history.push(`/all_boards`)
-      
+      dispatch(addLikes(response.data))      
     })
     .catch(error => console.log(error))
   }
