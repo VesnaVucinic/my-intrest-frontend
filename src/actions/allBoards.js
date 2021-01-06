@@ -22,13 +22,13 @@ export const getAllBoards = () => {
     // console.log("hello")
     return dispatch => {
         // debugger
-        const token = localStorage.token        
+        // const token = localStorage.token        
 
         return fetch("http://127.0.0.1:3001/api/v1/all_boards",  {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              'Authorization': 'Bearer ' + token
+              // 'Authorization': 'Bearer ' + token
  
             },
           })
