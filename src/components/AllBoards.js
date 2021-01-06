@@ -1,121 +1,69 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-// import { addBoardToMyBoards } from '../actions/allBoards'
-// import { createFavoriteBoard } from '../actions/favoriteBoards'
 import { likeBoard } from '../actions/myBoards'
-// import { withRouter } from 'react-router-dom'
 
-
+import { Card, Icon, Image, Label, Button, Segment  } from 'semantic-ui-react'
 
 const AllBoards = (props) => {
     const allBoardsCards = props.boards.length > 0  
     ? 
         props.boards.map(board => (
-                <Card  key={board.id} style={{ width: '18rem' }}>
-                    <Link to={`/all-boards/${board.id}`}>
-                        <Card.Img src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
-                    </Link>    
-                    <Card.Body>
-                        <Card.Title>{board.attributes.name}</Card.Title>
-                        <Card.Text>Uploaded by {board.attributes.user.name}</Card.Text>
-                        {/* <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>createFavoriteBoard(board)}>Get this board</Button> */}
-                        <Button variant="light" size="sm" onClick={() => props.likeBoard(board)}> ❤️ </Button> {board.attributes.likes}
-                    </Card.Body>        
-                </Card>
+                <Card key={board.id} style={{ width: '15rem'}}>
+                    <Image src={board.attributes.image_url} wrapped ui={false}/>
+                    <Card.Content>
+                        <Card.Header>{board.attributes.name}</Card.Header>
+                        <Card.Description>
+                            Uploaded by {board.attributes.user.name}
+                        </Card.Description><br/>
+                        {/* <a>
+                            <Icon name='heart' color="red" size='large' onClick={() => props.likeBoard(board)}/>
+                            <strong>{board.attributes.likes}</strong>
+                        </a> */}
+                        
+                        {props.currentUser ?
+                            <Button as='div' labelPosition='right'>
+                                <Button icon  color='red' onClick={() => props.likeBoard(board)}>
+                                    <Icon name='heart' />
+                                    Like
+                                </Button>
+                                <Label as='a' basic color='red' basic pointing='left'>
+                                    <strong>{board.attributes.likes}</strong>
+                                </Label>
+                            </Button>
+                        : 
+                            <Button as='div' labelPosition='right'>
+                                <Button icon  color='red' >
+                                    <Icon name='heart' />
+                                    Liked
+                                </Button>
+                                <Label as='a'  color='red' basic pointing='left'>
+                                    <strong>{board.attributes.likes}</strong>
+                                </Label>
+                            </Button>
+                        }
+                    
+                    </Card.Content>
+                </Card>  
             )) 
     : 
         null 
 
     return (
-        <div className="flex-container">
+        <Segment raised> 
+        <Card.Group style={{ margin: '15px', justifyContent: 'center'}}>
             {allBoardsCards} 
-        </div>
+        </Card.Group>
+        </Segment>
     )
 }
 
 const mapStateToProps = state => {
     return {
         boards: state.allBoards,
-        board: state.board
+        board: state.board,
+        currentUser: state.currentUser
+        
     }
 }
 
 export default connect(mapStateToProps, { likeBoard })(AllBoards)
-// class AllBoards extends Component {
-//     render() {
-//         const { boards, board, likeBoard} = this.props
-//         const allBoardsCards = boards.length > 0  
-//         ? 
-//             props.boards.map(board => (
-//                     <Card  key={board.id} style={{ width: '18rem' }}>
-//                         <Link to={`/all-boards/${board.id}`}>
-//                             <Card.Img src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
-//                         </Link>    
-//                         <Card.Body>
-//                             <Card.Title>{board.attributes.name}</Card.Title>
-//                             <Card.Text>Uploaded by {board.attributes.user.name}</Card.Text>
-//                             {/* <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>createFavoriteBoard(board)}>Get this board</Button> */}
-//                             <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>Like</Button> {board.attributes.likes}
-//                             <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>Not a Fan</Button> {board.attributes.likes}
-    
-//                         </Card.Body>        
-//                     </Card>
-//                 )) 
-//         : 
-//             null 
-    
-//         return (
-//             <div className="flex-container">
-//                 {allBoardsCards} 
-//             </div>
-//         )
-//     }
-// }
-// const mapStateToProps = state => {
-//     return {
-//         boards: state.allBoards,
-//         board: state.board
-//     }
-// }
-
-// export default connect(mapStateToProps, { likeBoard })(AllBoards)
-
-// const AllBoards = props => {
-//     const allBoardsCards = props.boards.length > 0  
-//     ? 
-//         props.boards.map(board => (
-//                 <Card  key={board.id} style={{ width: '18rem' }}>
-//                     <Link to={`/all-boards/${board.id}`}>
-//                         <Card.Img src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
-//                     </Link>    
-//                     <Card.Body>
-//                         <Card.Title>{board.attributes.name}</Card.Title>
-//                         <Card.Text>Uploaded by {board.attributes.user.name}</Card.Text>
-//                         {/* <Button variant="light" className="justify-content-cener" size="sm" onClick={()=>createFavoriteBoard(board)}>Get this board</Button> */}
-//                         <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>Like</Button> {board.attributes.likes}
-//                         <Button variant="light" className="justify-content-cener" size="sm" onClick={() => likeBoard(board)}>Like</Button> {board.attributes.likes}
-
-//                     </Card.Body>        
-//                 </Card>
-//             )) 
-//     : 
-//         null 
-
-//     return (
-//         <div className="flex-container">
-//             {allBoardsCards} 
-//         </div>
-//     )
-// }
-
-// const mapStateToProps = state => {
-//     return {
-//         boards: state.allBoards,
-//         board: state.board
-//     }
-// }
-
-// export default connect(mapStateToProps, { likeBoard })(AllBoards)
