@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 // import Button from 'react-bootstrap/Button'
 // import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header } from 'semantic-ui-react'
 
 
 // 3. This means redux gives us back a prop called updateBoardForm 
@@ -88,17 +88,17 @@ return (
         {editMode ? "Update Board" : " Create Board"}
       </Header>
         <Form size='large'>
-          <Segment stacked>
+          {/* <Segment  > */}
             <Form.Input fluid name = "name" placeholder='Board name' type="text" value={name} onChange={handleChange} />
             <Form.Input fluid name = "imageUrl" placeholder='Image Url' type='text' value={imageUrl} onChange={handleChange} />
 
-            <Button color='blue' fluid size='large' onClick={event => {
+            <Button type="button" color='blue' fluid size='large' onClick={event => {
                 event.preventDefault()
                 handleSubmit(formData, userId)
             }}>
                 {editMode ? "Update Board" : " Create Board"}
           </Button>
-          </Segment>
+          {/* </Segment> */}
         </Form>
       </Grid.Column>
     </Grid>

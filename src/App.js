@@ -10,27 +10,20 @@ import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import MyBoards from './components/MyBoards.js'
 import AllBoards from './components/AllBoards.js'
-
 import BoardForm from './components/BoardForm'
 import BoardCard from './components/BoardCard'
 import Home from './components/Home'
 import { setFormDataForEdit } from './actions/boardForm'
 import NewBoardFormWrapper from './components/NewBoardFormWrapper'
-
 import { Route, Switch, withRouter, Link } from 'react-router-dom'
-
-
 import MainContainer from './components/MainContainer';
 import Logout from './components/Logout';
 import EditBoardFormWrapper from './components/EditBoardFormWrapper';
 import allBoards from './reducers/allBoards';
-import Container from 'react-bootstrap/Container'
+// import Container from 'react-bootstrap/Container'
+import { Container, Segment } from 'semantic-ui-react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
-
-
-
 
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
@@ -42,9 +35,9 @@ class App extends React.Component {
   render() {
     const { loggedIn, myBoards, setFormDataForEdit } = this.props
     return (
-      <div className="App">
+      <div fluid className="App">
         {/* { loggedIn ? <NavBar/> : <Home/> } */}
-        {loggedIn ? <LoggedInNavBar/>: <NotLoggedInNavBar/>}
+        {loggedIn ? <LoggedInNavBar/>:<Home/>}
         
         {/* <Header /> */}
         <Switch>
@@ -53,7 +46,21 @@ class App extends React.Component {
           {/* <Route exact path='/' render={() => loggedIn ? <MyBoards/> : <Home/>}/> */}
           <Route exact path='/boards' component={MyBoards}/>
           
-          <Route exact path='/boards/new' component={NewBoardFormWrapper}/>
+          <Route exact path='/boards/new' 
+          // component={NewBoardFormWrapper}
+          render={()=>
+           <Row>
+             <Col>
+             <MyBoards/>
+             </Col> 
+             <Col >  
+             <NewBoardFormWrapper/>
+             </Col>
+           </Row>
+          }
+          />
+          
+           
           {/* I am rendering new board as a child directly of a route and when I use component then route will authomaticly pass those props along to this component 
           if I split it up into render like for Signup then I have to be more specific which roure props I want to supply
           like: <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
@@ -73,15 +80,13 @@ class App extends React.Component {
             const board = myBoards.find(board => board.id === props.match.params.id) 
             // dispatch updateForn -> trip, react will not alowed change of state inside render method that need to be pure
             return (
-                      <Container>
+                      <Container style={{marginTop: '20px'}}>
                          <Row>
-                          <Col >
-                            <BoardCard board={board} {...props}/>
-                            {/* <EditBoardFormWrapper board={board} {...props}/> */}
+                          <Col>
+                            <BoardCard className="boardCard" board={board} {...props}/>
                           </Col> 
                           <Col >  
                             <EditBoardFormWrapper board={board} {...props}/>
-                            {/* <BoardCard board={board} {...props}/>  */}
                           </Col>
                         </Row>
                       </Container>
@@ -89,14 +94,8 @@ class App extends React.Component {
           }
           }/>
           <Route exact path='/all-boards' component={AllBoards}/>
-          {/* <Route exact path='/all-boards/:id' render={props => {
-           const board = allBoards.find(board => board.id === props.match.params.id) 
-           console.log(board)
-
-           return <BoardCard board={board} {...props}/>
-          } 
-          }/> */}
         </Switch>
+        
       </div>
           
     );
