@@ -1,36 +1,49 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import { Link } from 'react-router-dom'
 import { deleteBoard  } from  '../actions/myBoards'
 import { connect } from 'react-redux'
-import { likeBoard } from '../actions/myBoards'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-
+import { Card, Image, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 class BoardCard extends Component {
-
+    
     render() {
-        const { board, history, deleteBoard, likeBoard } = this.props;
+        const { board, history, deleteBoard } = this.props;
         const boardId = board ? board.id : null
         console.log (board)
 
         return (
             board ?
-           
-                    <Card style={{ width: '22rem' }}>
-                        <Card.Img variant="top" src={board.attributes.image_url} hight="150" width="150"  alt="..."/>
-                        <Card.Body>
-                            <Card.Title>{board.attributes.name}</Card.Title>
-                            <Card.Text>Uploaded by {board.attributes.user.name} <br/>
-                                <Link to={`/boards/${board.id}/edit`}>Edit this board</Link>
-                            </Card.Text>
-                            <Button variant="light" className="justify-content-center" size="sm" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button><br/>
-                            <Button variant="light" className="justify-content-center" size="sm" onClick={() => likeBoard(board)}>❤️</Button> {board.attributes.likes}
-    
-                        </Card.Body>
-                    </Card>
+                    <Card style={{ width: '18rem', marginRight: 'auto', marginLeft: 'auto', backgroundColor: 'rgba(27, 30, 31, 0.034)' }}>
+                        <Image src={board.attributes.image_url} wrapped ui={false} />
+                        <Card.Content>
+                        <Card.Header>{board.attributes.name}</Card.Header>
+                        <Card.Description>
+                            Uploaded by {board.attributes.user.name}
+                        </Card.Description><br/>
+                            <div className='ui two buttons'>
+                                {/* <a href={`/boards/${board.id}/edit`}> */}
+                                    <Button type="button" color="blue" as={Link} to={`/boards/${board.id}/edit`}>
+                                        Edit this board 
+                                    </Button>
+                                {/* </a> */}
+                                <Button   color="black" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
+                            </div><br/><br/>
+                        {/* <a>
+                            <Icon name='heart' color="red" size='large' onClick={() => likeBoard(board)}/>
+                            <strong>{board.attributes.likes}</strong>
+                        </a> */}
+                                {/* <Button as='div' labelPosition='right'>
+                                    <Button icon  color='red' >
+                                        <Icon name='heart' />
+                                        Liked
+                                    </Button>
+                                    <Label as='a' basic color='red' basic pointing='left'>
+                                        <strong>{board.attributes.likes}</strong>
+                                    </Label>
+                                </Button> */}
+                        </Card.Content>
+                     </Card>
                 :
             <p>This the the Board Card with no board!</p> 
         ) 
@@ -42,6 +55,6 @@ const mapStateToProps = state => {
         boards: state.boards
     }
 }
-export default connect(mapStateToProps, { deleteBoard, likeBoard })(BoardCard)
+export default connect(mapStateToProps, { deleteBoard })(BoardCard)
 
 
