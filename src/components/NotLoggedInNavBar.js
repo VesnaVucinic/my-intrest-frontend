@@ -29,11 +29,13 @@
 
 
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import AllBoards from './AllBoards'
+import { connect } from 'react-redux'
 
-export default class MenuExampleBasic extends Component {
+ class NotLoggedInNavBar extends Component {
   state = {}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -42,25 +44,31 @@ export default class MenuExampleBasic extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu>
-        <Menu.Item
-          as={NavLink} to="/login"
-          name='Log In'
-          active={activeItem === 'login'}
-          onClick={this.handleItemClick}
-        >
-          Log In
-        </Menu.Item>
+      <div>
+        <Menu >
+          <Menu.Item
+            as={NavLink} to="/login"
+            name='Log In'
+            active={activeItem === 'login'}
+            onClick={this.handleItemClick}
+          >
+            Log In
+          </Menu.Item>
 
-        <Menu.Item
-          as={NavLink} to="/signup"
-          name='Sign Up'
-          active={activeItem === 'signup'}
-          onClick={this.handleItemClick}
-        >
-          Sign Up
-        </Menu.Item>
-      </Menu>
+          <Menu.Item
+            as={NavLink} to="/signup"
+            name='Sign Up'
+            active={activeItem === 'signup'}
+            onClick={this.handleItemClick}
+          >
+            Sign Up
+          </Menu.Item>
+        </Menu>
+        </div>
+
+
     )
   }
 }
+export default NotLoggedInNavBar
+ 

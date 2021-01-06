@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from "../actions/currentUser.js"
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom'
-
+import { Button }  from 'semantic-ui-react'
 
 
 // I am using importing logout which is action creator;
@@ -15,7 +15,7 @@ const Logout = ({ logout, history }) => {
   // shorthend mapDispatchToProps so props.logout I grabed by 
   // destructuring the incoming argument { logout } and that is what 
   // I am passing as callbeck to on Submit and when I click the button-form,
-  //  whwn I submit this action creator gets dispatched by redux becuose 
+  //  when I submit this action creator gets dispatched by redux becuose 
   // I have thunk which returns the function in const logut return desatch =>   in file actions/currentUser.js
   //  clear the currentUser and return fetch request which tell the backend clear session/token for me 
   return (
@@ -25,9 +25,9 @@ const Logout = ({ logout, history }) => {
         history.push('/')
       }
     }>
-      <Button type="submit" variant="light" className="justify-content-end" size="sm" >Log Out</Button>
+    
+      <Button primary type="submit" >Log Out</Button>
       {/* <input type="submit" value="Log Out"/> */}
-
     </form>
     
   )

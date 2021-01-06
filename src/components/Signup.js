@@ -5,7 +5,7 @@ import { signup } from "../actions/currentUser.js"
 // import Button from 'react-bootstrap/Button'
 // import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment, Container } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
@@ -56,6 +56,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     //     </Form>
     // )
     return (
+      <Container>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='blue' textAlign='center'>
@@ -77,6 +78,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
             </Message>
           </Grid.Column>
         </Grid>
+        </Container>
       )
 
     
