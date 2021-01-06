@@ -1,13 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { Component }  from 'react';
+import { connect } from 'react-redux';
+import { getAllBoards } from '../actions/allBoards'
+import NotLoggedInNavBar from './NotLoggedInNavBar'
+import AllBoards from './AllBoards'
 
-const Home = () => (
-    <div>
-        <h2>Welcome please sign up or log in </h2>
-        <span>
-            <Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link>
-        </span>
-    </div>
-)
+class Home extends Component {
+  
+    componentDidMount() {
+        this.props.getAllBoards()
+    }
 
-export default Home;
+    render() {
+     
+        return (
+            <div>
+                <NotLoggedInNavBar/>
+                {this.props.boards.length > 0 ? <AllBoards boards={this.props.boards} /> : null}
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        boards: state.allBoards, 
+    }
+}
+
+export default connect(mapStateToProps, { getAllBoards })(Home)
