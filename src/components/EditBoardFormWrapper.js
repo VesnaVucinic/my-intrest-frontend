@@ -38,9 +38,7 @@ class EditBoardFormWrapper extends React.Component {
     }
     render () {
         const { history  } = this.props
-        return  <Container>
-                    <BoardForm editMode history={history} handleSubmit={this.handleSubmit}/>
-                </Container>
+        return  <BoardForm editMode history={history} handleSubmit={this.handleSubmit}/>
     }
 };
 
