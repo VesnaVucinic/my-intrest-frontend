@@ -58,7 +58,9 @@ class AllBoards extends React.Component {
 
             return (
                 <div>
+                    {this.props.currentUser ?
                     <Input type='search' icon='search' placeholder='Search board' onChange={this.handleChange} size='large' style={{marginTop: '20px'}}/>
+                    : null }
                     <Card.Group  style={{ margin: '15px', justifyContent: 'center'}}>
                         {allBoardsCards} 
                     </Card.Group>
