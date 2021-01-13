@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { likeBoard } from '../actions/myBoards'
-import { Card, Icon, Image, Label, Button } from 'semantic-ui-react'
+import { Card, Icon, Image, Label, Button, Input } from 'semantic-ui-react'
 
 class AllBoards extends React.Component {
     state = {
@@ -58,7 +58,7 @@ class AllBoards extends React.Component {
 
             return (
                 <div>
-                    <input type='search' placeholder='Search board' onChange={this.handleChange}/>
+                    <Input type='search' icon='search' placeholder='Search board' onChange={this.handleChange} size='large' style={{marginTop: '20px'}}/>
                     <Card.Group  style={{ margin: '15px', justifyContent: 'center'}}>
                         {allBoardsCards} 
                     </Card.Group>
