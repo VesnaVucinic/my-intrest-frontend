@@ -1,8 +1,9 @@
 .App {
     text-align: center;
-  }
+    background-color: rgba(8, 8, 8, 0.089);
+    /* background-image: "https://www.ensemblesalon.com/wp-content/uploads/sites/276/2015/10/vid-bg.jpg"; */
 
- 
+  }
 
 /* 
   a.hover {
@@ -85,3 +86,4 @@
   flex-wrap: wrap;
   justify-content: center;
 } */
+

@@ -7,6 +7,8 @@ import { signup } from "../actions/currentUser.js"
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Form, Grid, Header, Message, Segment, Container } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
@@ -56,8 +58,8 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     //     </Form>
     // )
     return (
-      <Container>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      // <Container>
+        <Grid textAlign='center' style={{ height: '100vh', marginTop: '20px'  }}>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='blue' textAlign='center'>
               Sign-up to create your account
@@ -74,11 +76,13 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
               </Segment>
             </Form>
             <Message>
-              Already have account? <a href='login'>Log In</a>
+              {/* Already have account? <a href='login'>Log In</a> */}
+              Already have account? <Button size='mini' basic  as={Link} to='login'>Log In</Button>
+              
             </Message>
           </Grid.Column>
         </Grid>
-        </Container>
+        // </Container>
       )
 
     

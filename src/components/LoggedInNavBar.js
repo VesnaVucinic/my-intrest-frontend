@@ -54,8 +54,11 @@ import { Menu, Container } from 'semantic-ui-react'
 // }
 
 // export default withRouter(connect(mapStateToProps)(LoggedInNavBar))
+import { clearAllBoards } from '../actions/allBoards'
 
 class LoggedInNavBar extends Component {
+
+
     state = {}
   
     handleItemClick = ({ name}) => this.setState({ activeItem: name })
@@ -81,6 +84,7 @@ class LoggedInNavBar extends Component {
           name='My Boards'
           active={activeItem === 'boards'}
           onClick={this.handleItemClick}
+
         >
           My Boards
         </Menu.Item>
@@ -90,6 +94,7 @@ class LoggedInNavBar extends Component {
           name='New Board'
           active={activeItem === '/boards/new'}
           onClick={this.handleItemClick}
+
         >
           New Board
         </Menu.Item>
@@ -104,7 +109,8 @@ class LoggedInNavBar extends Component {
 const mapStateToProps = ({ currentUser }) => {
   return {
     currentUser,
-    loggedIn: !!currentUser
+    loggedIn: !!currentUser,
+    
   }
 }
     

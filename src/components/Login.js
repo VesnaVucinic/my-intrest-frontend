@@ -6,9 +6,12 @@ import { login } from "../actions/currentUser.js"
 // import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+
 
 const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
+
     const handleInputChange = event => {
         const { name, value } = event.target
         const updatedFormInfo = {
@@ -49,7 +52,7 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
   // )
 
   return (
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid textAlign='center' style={{ height: '100vh', marginTop: '35px' }} >
       <Grid.Column style={{ maxWidth: 450 }}>
       {/* { (error != '')
       ?
@@ -71,7 +74,7 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
           </Segment>
         </Form>
         <Message>
-          New to us? <a href='signup'>Sign Up</a>
+          New to us? <Button size='mini' basic as={Link} to='signup'>Sign Up</Button>
         </Message>
       </Grid.Column>
     </Grid>
@@ -88,7 +91,8 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
 // }
 const mapStateToProps = state => {
     return {
-        loginFormData: state.loginForm
+        loginFormData: state.loginForm,
+        boards: state.myBoards
     }
 }
 //   imported action creator updateLoginForm I passed as an object in connect as a second argument

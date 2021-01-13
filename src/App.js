@@ -2,50 +2,38 @@ import React from 'react'
 import './App.css';
 import { getCurrentUser } from "./actions/currentUser"
 import { connect } from 'react-redux';
-import NavBar from './components/NavBar'
-import LoggedInNavBar from './components/LoggedInNavBar'
-import NotLoggedInNavBar from './components/NotLoggedInNavBar'
-import Header from './components/Header'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import MyBoards from './components/MyBoards.js'
 import AllBoards from './components/AllBoards.js'
-import BoardForm from './components/BoardForm'
 import BoardCard from './components/BoardCard'
 import Home from './components/Home'
-import { setFormDataForEdit } from './actions/boardForm'
 import NewBoardFormWrapper from './components/NewBoardFormWrapper'
-import { Route, Switch, withRouter, Link } from 'react-router-dom'
-import MainContainer from './components/MainContainer';
-import Logout from './components/Logout';
+import { Route, Switch, withRouter } from 'react-router-dom'
 import EditBoardFormWrapper from './components/EditBoardFormWrapper';
-import allBoards from './reducers/allBoards';
-// import Container from 'react-bootstrap/Container'
-import { Container, Segment } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { getAllBoards } from './actions/allBoards'
 
 class App extends React.Component {
   // whenever component mount I am sending request to check is someone is logged in
   componentDidMount() {
-    // console.log("hello")
     this.props.getCurrentUser()
   }
 
   render() {
-    const { loggedIn, myBoards, setFormDataForEdit } = this.props
+    const { myBoards } = this.props
     return (
       <div fluid className="App">
-        {/* { loggedIn ? <NavBar/> : <Home/> } */}
-        {loggedIn ? <LoggedInNavBar/>:<Home/>}
-        
-        {/* <Header /> */}
+        <Home/>
         <Switch>
+          <Route exact path="/" component={AllBoards}/>  
+          {/* <Route exact path="/" render={props => <Home{...props}/>} /> */}
           <Route exact path='/signup' render={()=><Signup/>}/>
           <Route exact path='/login' component={Login}/>
           {/* <Route exact path='/' render={() => loggedIn ? <MyBoards/> : <Home/>}/> */}
           <Route exact path='/boards' component={MyBoards}/>
-          
           <Route exact path='/boards/new' 
           // component={NewBoardFormWrapper}
           render={()=>
@@ -58,9 +46,7 @@ class App extends React.Component {
              </Col>
            </Row>
           }
-          />
-          
-           
+          />  
           {/* I am rendering new board as a child directly of a route and when I use component then route will authomaticly pass those props along to this component 
           if I split it up into render like for Signup then I have to be more specific which roure props I want to supply
           like: <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
@@ -93,7 +79,7 @@ class App extends React.Component {
                     )
           }
           }/>
-          <Route exact path='/all-boards' component={AllBoards}/>
+          <Route exact path='/all-boards' render={props =><AllBoards {...props}/>}/>
         </Switch>
         
       </div>
@@ -105,11 +91,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return ({
     loggedIn: !!state.currentUser,
-    // allBoards: state.allBoards
     myBoards: state.myBoards,
     allBoards: state.allBoards
-
-
     // loogdIn is boolean version of state.currentUser, I dont need whole object currentUser but only to know in app is someone logged in. Can be only currentUser in return
     // I am manipulating Redux state and getting only what I need which is weather is someone logged in or not 
   })
@@ -117,4 +100,4 @@ const mapStateToProps = state => {
 
 // export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
 // export default connect(mapStateToProps, { getCurrentUser })(App);
-export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser,getAllBoards  })(App));

@@ -85,7 +85,6 @@ export const signup = (userInfo, history) => {
 
 export const getCurrentUser = () => {
     return dispatch => {
-      // const token = localStorage.token
       const token = localStorage.getItem("token")
       return fetch("http://127.0.0.1:3001/api/v1/get_current_user", {
         method: "GET",
@@ -99,8 +98,6 @@ export const getCurrentUser = () => {
           if (response.error) {
             alert(response.error)
           } else {
-            // localStorage.setItem('token', response.jwt)
-
             dispatch(setCurrentUser(response.user.data))
             dispatch(getMyBoards())
             dispatch(getAllBoards()) 
@@ -118,7 +115,6 @@ export const logout = () => {
     dispatch(clearCurrentUser())
     dispatch(clearBoards())
     dispatch(clearAllBoards())
-
     // return fetch('http://localhost:3001/api/v1/logout', {
     //   method: "DELETE"
     // })

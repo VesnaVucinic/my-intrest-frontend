@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Card, Image, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-
 class BoardCard extends Component {
     
     render() {
@@ -14,7 +13,7 @@ class BoardCard extends Component {
 
         return (
             board ?
-                    <Card style={{ width: '18rem', marginRight: 'auto', marginLeft: 'auto', backgroundColor: 'rgba(27, 30, 31, 0.034)' }}>
+                    <Card style={{ width: '18rem', marginRight: 'auto', marginLeft: 'auto'}}>
                         <Image src={board.attributes.image_url} wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{board.attributes.name}</Card.Header>
@@ -22,17 +21,15 @@ class BoardCard extends Component {
                             Uploaded by {board.attributes.user.name}
                         </Card.Description><br/>
                             <div className='ui two buttons'>
-                                {/* <a href={`/boards/${board.id}/edit`}> */}
                                     <Button type="button" color="blue" as={Link} to={`/boards/${board.id}/edit`}>
                                         Edit this board 
                                     </Button>
-                                {/* </a> */}
                                 <Button   color="black" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
                             </div><br/><br/>
-                        {/* <a>
-                            <Icon name='heart' color="red" size='large' onClick={() => likeBoard(board)}/>
-                            <strong>{board.attributes.likes}</strong>
-                        </a> */}
+                                {/* <a>
+                                    <Icon name='heart' color="red" size='large' onClick={() => likeBoard(board)}/>
+                                    <strong>{board.attributes.likes}</strong>
+                                </a> */}
                                 {/* <Button as='div' labelPosition='right'>
                                     <Button icon  color='red' >
                                         <Icon name='heart' />
