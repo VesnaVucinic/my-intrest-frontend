@@ -2,12 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from "../actions/loginForm.js"
 import { login } from "../actions/currentUser.js"
-// import Button from 'react-bootstrap/Button'
-// import Form from 'react-bootstrap/Form'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
 
 const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
@@ -15,7 +12,7 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     const handleInputChange = event => {
         const { name, value } = event.target
         const updatedFormInfo = {
-          ...loginFormData,
+          ...loginFormData, 
           [name]: value
         }
         updateLoginForm(updatedFormInfo)
@@ -26,59 +23,27 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
         login(loginFormData, history)
     }
 
-  //   return (        
-  //     <Form className="container" onSubmit={handleSubmit} >
-  //         <h1>Log In Form</h1>
-  //         <Form.Group controlId="formUserName">
-  //             <Form.Label>Email address</Form.Label>
-  //             <Form.Control 
-  //                name = "email"
-  //                onChange={handleInputChange} 
-  //                type="email" 
-  //                value={loginFormData.email}/>
-  //         </Form.Group>
-         
-  //         <Form.Group controlId="formUserName">
-  //              <Form.Label>Password</Form.Label>
-  //              <Form.Control 
-  //                 name = "password"
-  //                 onChange={handleInputChange} 
-  //                 type="password" 
-  //                 value={loginFormData.password}/>
-  //         </Form.Group>
-
-  //         <Button variant="primary" type="submit">Log in</Button>
-  //     </Form>
-  // )
-
-  return (
-    <Grid textAlign='center' style={{ height: '100vh', marginTop: '35px' }} >
-      <Grid.Column style={{ maxWidth: 450 }}>
-      {/* { (error != '')
-      ?
-      <Message negative><p>Username/Password is Incorrect</p></Message>
-      :
-      null
-      } */}
-        <Header as='h2' color='blue' textAlign='center'>
-          Log-in to your account
-      </Header>
-        <Form size='large'>
-          <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange} />
-            <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' onChange={handleInputChange} />
-
-            <Button color='blue' fluid size='large' onClick={handleSubmit}>
-              Login
-          </Button>
-          </Segment>
-        </Form>
-        <Message>
-          New to us? <Button size='mini' basic as={Link} to='signup'>Sign Up</Button>
-        </Message>
-      </Grid.Column>
-    </Grid>
-  )
+    return (
+      <Grid textAlign='center' style={{ height: '100vh', marginTop: '35px' }} >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='blue' textAlign='center'>
+            Log-in to your account
+        </Header>
+          <Form size='large'>
+            <Segment stacked>
+              <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange} />
+              <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' onChange={handleInputChange} />
+              <Button color='blue' fluid size='large' onClick={handleSubmit}>
+                Login
+            </Button>
+            </Segment>
+          </Form>
+          <Message>
+            New to us? <Button size='mini' basic as={Link} to='signup'>Sign Up</Button>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    )
 }
 
 // this gets the state from the store and allowes me to use as a props gives us access to this chunk of state as a props

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from "../actions/currentUser.js"
-// import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom'
 import { Button }  from 'semantic-ui-react'
 
@@ -10,7 +9,6 @@ import { Button }  from 'semantic-ui-react'
 // I am using mapsDispetchToProps object which givs mi props that  which I am destructuring and using as a call back
 const Logout = ({ logout, history }) => {
   // console.log(history);
-
   // logot is passed as props as result of connect it's used 
   // shorthend mapDispatchToProps so props.logout I grabed by 
   // destructuring the incoming argument { logout } and that is what 
@@ -26,8 +24,7 @@ const Logout = ({ logout, history }) => {
       }
     }>
     
-      <Button primary type="submit" >Log Out</Button>
-      {/* <input type="submit" value="Log Out"/> */}
+      <Button primary size='tiny' type="submit" >Log Out</Button>
     </form>
     
   )
@@ -42,25 +39,3 @@ export default withRouter(connect(null, { logout } )(Logout))
     // 2 action creaators for asynchronous actions where first one will fire on action
     // and second one going to do something when we get a response
 // 2. another case statement in my currentUser reducer
-
-
-
-  // <Container>
-  //   <Button size='small' onClick = { logout }>Log Out</Button>
-  // </Container>
-
-// import { Menu, Container } from 'semantic-ui-react'
-// import { NavLink, withRouter } from 'react-router-dom'
-// import { Button } from 'semantic-ui-react'
-
-// const Logout = ({ logout }) => {
-//   return (
-//     // <Button size="sm" onClick = { logout }>Log Out</Button>
-//     <Menu.Item
-//             as={NavLink} to="/logout"
-//             name='Log Out'
-//             active={activeItem === 'logout'}
-//             onClick={ logout }
-//     />
-//   )
-// }

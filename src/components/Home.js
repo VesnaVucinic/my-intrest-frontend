@@ -1,8 +1,6 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { getAllBoards } from '../actions/allBoards'
-import NotLoggedInNavBar from './NotLoggedInNavBar'
-import AllBoards from './AllBoards'
 import { Segment, Button, Header} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { clearAllBoards } from '../actions/allBoards'

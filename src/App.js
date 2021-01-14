@@ -29,23 +29,20 @@ class App extends React.Component {
         <Home/>
         <Switch>
           <Route exact path="/" component={AllBoards}/>  
-          {/* <Route exact path="/" render={props => <Home{...props}/>} /> */}
           <Route exact path='/signup' render={()=><Signup/>}/>
           <Route exact path='/login' component={Login}/>
-          {/* <Route exact path='/' render={() => loggedIn ? <MyBoards/> : <Home/>}/> */}
           <Route exact path='/boards' component={MyBoards}/>
           <Route exact path='/boards/new' 
-          // component={NewBoardFormWrapper}
-          render={()=>
-           <Row>
-             <Col>
-             <MyBoards/>
-             </Col> 
-             <Col >  
-             <NewBoardFormWrapper/>
-             </Col>
-           </Row>
-          }
+            render={()=>
+            <Row>
+              <Col>
+              <MyBoards/>
+              </Col> 
+              <Col >  
+              <NewBoardFormWrapper/>
+              </Col>
+            </Row>
+            }
           />  
           {/* I am rendering new board as a child directly of a route and when I use component then route will authomaticly pass those props along to this component 
           if I split it up into render like for Signup then I have to be more specific which roure props I want to supply
@@ -77,11 +74,10 @@ class App extends React.Component {
                         </Row>
                       </Container>
                     )
-          }
+            }
           }/>
           <Route exact path='/all-boards' render={props =><AllBoards {...props}/>}/>
         </Switch>
-        
       </div>
           
     );

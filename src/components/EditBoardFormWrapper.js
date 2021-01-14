@@ -2,7 +2,6 @@ import React from 'react';
 import BoardForm from './BoardForm'
 import { updateBoard  } from  '../actions/myBoards'
 import { setFormDataForEdit, resetBoardForm  } from '../actions/boardForm'
-import Container from 'react-bootstrap/Container'
 import { connect } from 'react-redux'
 
 class EditBoardFormWrapper extends React.Component {

@@ -26,19 +26,6 @@ class BoardCard extends Component {
                                     </Button>
                                 <Button   color="black" onClick={()=>deleteBoard(boardId, history)}>Delete this board</Button>
                             </div><br/><br/>
-                                {/* <a>
-                                    <Icon name='heart' color="red" size='large' onClick={() => likeBoard(board)}/>
-                                    <strong>{board.attributes.likes}</strong>
-                                </a> */}
-                                {/* <Button as='div' labelPosition='right'>
-                                    <Button icon  color='red' >
-                                        <Icon name='heart' />
-                                        Liked
-                                    </Button>
-                                    <Label as='a' basic color='red' basic pointing='left'>
-                                        <strong>{board.attributes.likes}</strong>
-                                    </Label>
-                                </Button> */}
                         </Card.Content>
                      </Card>
                 :
