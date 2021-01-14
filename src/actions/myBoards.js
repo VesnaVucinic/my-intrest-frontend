@@ -7,7 +7,6 @@ export const setMyBoards = boards => {
     }
 }
 
-
 export const clearBoards = () => {
     return {
       type: "CLEAR_BOARDS"
@@ -46,11 +45,7 @@ export const addLikes = board => {
 export const getMyBoards = () => {
     // console.log("hello")
     return dispatch => {
-        // const token = localStorage.token    
         const token = localStorage.getItem("token")
-    
-        // debugger
-
         return fetch("http://127.0.0.1:3001/api/v1/boards",  {
             method: "GET",
             headers: {
@@ -61,11 +56,9 @@ export const getMyBoards = () => {
           })
           .then(response => response.json())
           .then (response => {
-              // console.log(response)
               if (response.error) {
                   alert(response.error)
               } else {
-                  // console.log(response.data)
                   dispatch(setMyBoards(response.data))
               }
               
@@ -95,15 +88,14 @@ export const createBoard = (boardData, history) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-            dispatch(addBoard(resp.data))
-            // add new trip to store: dispatch action by invocing that action creator with the information I need sddBoard 
-            // that returns to me object I actualy despatching which will then trriger or invoke
-            // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
-            dispatch(resetBoardForm())
-            history.push(`/all-boards`)
-            history.push(`/boards/${resp.data.id}`)
-
-        }
+              dispatch(addBoard(resp.data))
+              // add new board to store: dispatch action by invocing that action creator with the information I need sddBoard 
+              // that returns to me object I actualy despatching which will then trriger or invoke
+              // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
+              dispatch(resetBoardForm())
+              history.push(`/all-boards`)
+              history.push(`/boards/${resp.data.id}`)
+            }
         })
 
         .catch(console.log)
@@ -132,15 +124,13 @@ export const updateBoard = (boardData, history) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-            dispatch(updateBoardSuccess(resp.data))
-            // add new trip to store: dispatch action by invocing that action creator with the information I need sddBoard 
-            // that returns to me object I actualy despatching which will then trriger or invoke
-            // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
-            history.push(`/all-boards`)
-            history.push(`/boards/${resp.data.id}`)
-
-            // dispatch(resetBoardForm())
-        }
+              dispatch(updateBoardSuccess(resp.data))
+              // add new trip to store: dispatch action by invocing that action creator with the information I need sddBoard 
+              // that returns to me object I actualy despatching which will then trriger or invoke
+              // all of my reducers the one I am gonna catch on is case "ADD_BOARD" where I will concarenate that new board to my state 
+              history.push(`/all-boards`)
+              history.push(`/boards/${resp.data.id}`)
+            }
         })
 
         .catch(console.log)
@@ -164,7 +154,6 @@ export const deleteBoard = (boardId, history) => {
           } else {
             dispatch(deleteBoardSuccess(boardId))
             history.push(`/boards`)
-            // history.push(`/all_boards`)
             // go somewhere else --> board show?
             // add the new board to the store
           }

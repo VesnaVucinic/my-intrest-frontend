@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import usersReducer from './reducers/users.js'
 import currentUser from './reducers/currentUser'
 import thunk from 'redux-thunk'
 import loginForm from './reducers/loginForm'
@@ -7,7 +6,6 @@ import signupForm from './reducers/signupForm'
 import myBoards from './reducers/myBoards'
 import boardForm from './reducers/boardForm'
 import allBoards from './reducers/allBoards'
-
 
 // just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({

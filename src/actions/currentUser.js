@@ -3,7 +3,6 @@ import { resetSignupForm } from "./signupForm.js"
 import { getMyBoards, clearBoards } from "./myBoards.js"
 import { getAllBoards, clearAllBoards } from "./allBoards.js"
 
-
 // synchronous action creators
 export const setCurrentUser = user => {
     return {
@@ -50,7 +49,7 @@ export const login = (userInfo, history) => {
   }
 }
 
-export const signup = (userInfo, history) => {
+export const signup = (userInfo) => {
   console.log(userInfo)
   return dispatch => {
     const userCredentials = {
@@ -74,9 +73,7 @@ export const signup = (userInfo, history) => {
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards())
               dispatch(getAllBoards()) 
-
               dispatch(resetSignupForm())
-              // history.push('/')
           }
       })
       .catch(console.log)

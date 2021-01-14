@@ -5,13 +5,6 @@ export const setAllBoards = boards => {
     }
 }
 
-// export const addBoardToMyBoards = board => {
-//     return {
-//         type: "ADD_BOARD_TO_MY_BOARDS",
-//         board
-//     }
-// }
-
 export const clearAllBoards = () => {
     return {
       type: "CLEAR_ALL_BOARDS"
@@ -19,26 +12,18 @@ export const clearAllBoards = () => {
 }
 
 export const getAllBoards = () => {
-    // console.log("hello")
-    return dispatch => {
-        // debugger
-        // const token = localStorage.token        
-
+    return dispatch => {   
         return fetch("http://127.0.0.1:3001/api/v1/all_boards",  {
             method: "GET",
             headers: {
-              "Content-Type": "application/json",
-              // 'Authorization': 'Bearer ' + token
- 
+              "Content-Type": "application/json", 
             },
           })
           .then(response => response.json())
           .then (response => {
-            //   console.log(response)
               if (response.error) {
                   alert(response.error)
               } else {
-                //   console.log(response.data)
                   dispatch(setAllBoards(response.data))
               }
               

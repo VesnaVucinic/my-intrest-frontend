@@ -6,8 +6,6 @@ export default (state = initialState, action) => {
             return action.boards
         case "ADD_BOARD":
             return state.concat(action.board)
-        // case "ADD_BOARD_TO_MY_BOARDS":
-        //     return state.concat(action.board)
         case "UPDATE_BOARD":
             return state.map(board => board.id === action.board.id ? action.board : board) 
         case "LIKE_BOARD":
