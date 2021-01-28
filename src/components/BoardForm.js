@@ -1,21 +1,16 @@
 import React from 'react';
-// 1. We first grabthe action creator 
+// 1. We first grab the action creator 
 import { updateBoardForm } from "../actions/boardForm.js"
 import { connect } from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Form, Grid, Header } from 'semantic-ui-react'
 
-// 3. This means redux gives us back a prop called updateBoardForm 
-//  which when invocked, actually Redux will now dispatch 
 const BoardForm = ({ formData, updateBoardForm, userId, handleSubmit, editMode }) => {
    
    const{ name, imageUrl } = formData
 
     const handleChange= event =>{
        const { name, value } = event.target
-    // 4. this is not an invocation of just the action creator,
-    // it's now Redux dispatching the action  built by the actions
-    // creator with apropriate aguments 
        updateBoardForm(name, value)
    }
   return (
@@ -25,7 +20,6 @@ const BoardForm = ({ formData, updateBoardForm, userId, handleSubmit, editMode }
           {editMode ? "Update Board" : " Create Board"}
         </Header>
           <Form size='large'>
-            {/* <Segment  > */}
               <Form.Input fluid name = "name" placeholder='Board name' type="text" value={name} onChange={handleChange} />
               <Form.Input fluid name = "imageUrl" placeholder='Image Url' type='text' value={imageUrl} onChange={handleChange} />
 
@@ -35,7 +29,6 @@ const BoardForm = ({ formData, updateBoardForm, userId, handleSubmit, editMode }
               }}>
                   {editMode ? "Update Board" : " Create Board"}
             </Button>
-            {/* </Segment> */}
           </Form>
         </Grid.Column>
       </Grid>
@@ -43,15 +36,10 @@ const BoardForm = ({ formData, updateBoardForm, userId, handleSubmit, editMode }
 
 };
 const mapStateToProps = state => {
-    // const { name, imageUrl } = state.BoardForm
-    // const userId = state.currentUser ? state.currentUser.id : ""
     return {
-        // name,
-        // imageUrl
         formData: state.boardForm,
         userId: state.currentUser ? state.currentUser.id : ""
     }
 }
-// 2. We pass the action creator to redux's connect function
-// using eather mapDespatchToProps or the shorthand object syntax seen below
+
 export default connect(mapStateToProps, { updateBoardForm })(BoardForm);                                                                                                                                                                                                                                                                                                                                                                                                

@@ -9,16 +9,7 @@ const NewBoardFormWrapper = ({ history, createBoard }) => {
         createBoard({
             ...formData,
             userId,
-            // this obj represent data that go to backend
-            //  that is way history is second argument
         }, history)
-        // and now in action creator createBoard I am passing history as argument also
-
-        // formData: {
-        //     name: ""
-        //     imageUrl: ""
-        // }
-
     }
 
     return <BoardForm  history={history} handleSubmit={handleSubmit}/>

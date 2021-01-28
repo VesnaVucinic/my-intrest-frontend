@@ -17,7 +17,6 @@ import Col from 'react-bootstrap/Col'
 import { getAllBoards } from './actions/allBoards'
 
 class App extends React.Component {
-  // whenever component mount I am sending request to check is someone is logged in
   componentDidMount() {
     this.props.getCurrentUser()
   }
@@ -44,24 +43,14 @@ class App extends React.Component {
             </Row>
             }
           />  
-          {/* I am rendering new board as a child directly of a route and when I use component then route will authomaticly pass those props along to this component 
-          if I split it up into render like for Signup then I have to be more specific which roure props I want to supply
-          like: <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
-          ?then I dont need withRouter*/}
           <Route exact path='/boards/:id' render={props => {
-          //  I need to pass down attributes of board and obj that contains that info is my trip obj which I need to get from state 
-          // router props that givs me ability to look at the parametars from the URL and grab the one I need and that is match: match.params.id
-          // match have params that is grabing all the dynamic peaces of URL whose name is defined on the end of URL in this case :id
-          //  dynamic part of URL is captured and stored in an match obj called params the key is whwtever I called in this case id
           const board = myBoards.find(board => board.id === props.match.params.id) 
           console.log(board)
-          // obj that I found I am passing down as a prop to my board card board={board}
           return <BoardCard board={board} {...props}/>
           }
           }/>
           <Route exact path='/boards/:id/edit' render={props => {
             const board = myBoards.find(board => board.id === props.match.params.id) 
-            // dispatch updateForn -> trip, react will not alowed change of state inside render method that need to be pure
             return (
                       <Container style={{marginTop: '20px'}}>
                          <Row>
@@ -86,14 +75,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser,
     myBoards: state.myBoards,
     allBoards: state.allBoards
-    // loogdIn is boolean version of state.currentUser, I dont need whole object currentUser but only to know in app is someone logged in. Can be only currentUser in return
-    // I am manipulating Redux state and getting only what I need which is weather is someone logged in or not 
   })
 }
 
-// export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
-// export default connect(mapStateToProps, { getCurrentUser })(App);
-export default withRouter(connect(mapStateToProps, { getCurrentUser,getAllBoards  })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser,getAllBoards })(App));

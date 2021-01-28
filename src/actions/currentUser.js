@@ -1,7 +1,7 @@
 import { resetLoginForm } from "./loginForm.js"
 import { resetSignupForm } from "./signupForm.js"
 import { getMyBoards, clearBoards } from "./myBoards.js"
-import { getAllBoards, clearAllBoards } from "./allBoards.js"
+import { getAllBoards } from "./allBoards.js"
 
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -19,7 +19,6 @@ export const clearCurrentUser = () => {
 }
 // asynchronous action creators
 export const login = (userInfo, history) => {
-  // console.log(userInfo)
   return dispatch => {
     return fetch("http://127.0.0.1:3001/api/v1/login", {
       
@@ -27,8 +26,7 @@ export const login = (userInfo, history) => {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify( userInfo
-      )
+      body: JSON.stringify(userInfo)
     })
       .then(response =>response.json())
       .then(response =>{
@@ -40,7 +38,6 @@ export const login = (userInfo, history) => {
               dispatch(setCurrentUser(response.user.data))
               dispatch(getMyBoards()) 
               dispatch(getAllBoards()) 
-
               dispatch(resetLoginForm())
               history.push('/')
           }
@@ -105,29 +102,10 @@ export const getCurrentUser = () => {
     }
 }
 
-// this will cleare sessions from backend
 export const logout = () => {
   return dispatch => {
     localStorage.removeItem("token")
     dispatch(clearCurrentUser())
     dispatch(clearBoards())
-    dispatch(clearAllBoards())
-    // return fetch('http://localhost:3001/api/v1/logout', {
-    //   method: "DELETE"
-    // })
   }
 } 
-
-// export const logout = () => {
-//   return function (dispatch){
-  // it can be arrow function
-//     all asynchronous action creators that use thunk return function 
-  
-//   }
-// } 
-
-// optimistic thinking 
-// is with creating or editing something I could with thunk but even without thunk I can chose when 
-// I want to make changes to the state of application on frontend.
-// with optimistic thinking is whenever user makes change and trrigers an event
-//  on front end we are update fornt end right away we are not gonna wait a return from the backend 

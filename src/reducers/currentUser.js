@@ -1,5 +1,5 @@
 export default (state = null, action) => {
-    // null instead empty becouse to use for trouthiness check
+    // null instead empty becouse to use for truthiness check
     switch (action.type) {
       case "SET_CURRENT_USER":
         return action.user

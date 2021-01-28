@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { updateSignupForm } from "../actions/signupForm.js"
 import { signup } from "../actions/currentUser.js"
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Form, Grid, Header, Message, Segment, Container } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
-    // instead ({email, password}) can be (props) but in that case is value={props.email} value={props.password}
+    
+    const { name, email, password } = signupFormData
     const handleInputChange = event => {
         const { name, value } = event.target
         const updatedFormInfo = {
@@ -17,7 +18,6 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         }
         updateSignupForm(updatedFormInfo)
     }
-    // console.log(history);
     const handleSubmit = event => {
         event.preventDefault()
         signup(signupFormData)
@@ -33,9 +33,9 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
           </Header>
             <Form size='large'>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' name = "name" placeholder='Name' type="name" onChange={handleInputChange} />
-                <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" onChange={handleInputChange} />
-                <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' onChange={handleInputChange} />
+                <Form.Input fluid icon='user' iconPosition='left' name = "name" placeholder='Name' type="text" value={name} onChange={handleInputChange} />
+                <Form.Input fluid icon='user' iconPosition='left' name = "email" placeholder='E-mail address' type="email" value={email}  onChange={handleInputChange} />
+                <Form.Input fluid icon='lock' iconPosition='left' name = "password" placeholder='Password' type='password' value={password} onChange={handleInputChange} />
     
                 <Button color='blue' fluid size='large' onClick={handleSubmit}>
                   Sign Up

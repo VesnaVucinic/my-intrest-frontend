@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
-  // store is prop that must be provided and store must be created using createStore
   <Provider store={ store }>
     <Router ><App /></Router>
   </Provider>,

@@ -7,12 +7,7 @@ import myBoards from './reducers/myBoards'
 import boardForm from './reducers/boardForm'
 import allBoards from './reducers/allBoards'
 
-// just displaying different syntax options here (lines 8 and 9)
 const reducer = combineReducers({
-    // users: usersReducer,
-    // currentUser: currentUser, shorthande is just currentUser,
-    //  first currentUser is key and is what I want property to called in Redux, the second currentUser is value and yhat is reducer
-    // that is responsable for that one peace of state
     currentUser,
     loginForm,
     signupForm,
@@ -21,9 +16,7 @@ const reducer = combineReducers({
     allBoards
 })
 
-// createStore takes as arguments reducer and redux dev tools
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
 
 export default store
