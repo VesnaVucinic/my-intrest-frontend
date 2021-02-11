@@ -32,13 +32,13 @@ class App extends React.Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/boards' component={MyBoards}/>
           <Route exact path='/boards/new' 
-            render={()=>
+            render={(props)=>
             <Row>
               <Col>
               <MyBoards/>
               </Col> 
               <Col >  
-              <NewBoardFormWrapper/>
+              <NewBoardFormWrapper {...props} />
               </Col>
             </Row>
             }

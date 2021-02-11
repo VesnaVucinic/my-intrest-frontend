@@ -90,12 +90,10 @@ export const createBoard = (boardData, history) => {
             } else {
               dispatch(addBoard(resp.data))
               dispatch(resetBoardForm())
-              history.push(`/all-boards`)
+              // history.push(`/boards`)
               // history.push(`/boards/${resp.data.id}`)
             }
         })
-
-        .catch(console.log)
     }
 }
 
@@ -122,8 +120,8 @@ export const updateBoard = (boardData, history) => {
                 alert(resp.error)
             } else {
               dispatch(updateBoardSuccess(resp.data))
-              history.push(`/all-boards`)
-              history.push(`/boards/${resp.data.id}`)
+              // history.push(`/all-boards`)
+              history.push(`/boards/${resp.data.id}/edit`)
             }
         })
 
